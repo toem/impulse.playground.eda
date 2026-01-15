@@ -1,0 +1,661 @@
+//-recjx 
+// Example Impulse Record Producer Script for AXI4 Bus Signals
+// Demonstrates AXI4-specific features and differences from AXI3.
+//
+// TRANSACTION OVERVIEW (Time in µs):
+// ===================================
+// T1  (0.3µs):  Single-beat write, QoS=5
+// T2  (1.1µs):  4-beat write burst, QoS=3, Region=1
+// T3  (2.5µs):  Extended burst (32 beats, AWLEN=31) - AXI4 feature
+// T4  (9.1µs):  Maximum burst (256 beats, AWLEN=255) - AXI4 only!
+// T5  (60.3µs): Read with QoS=15 (urgent), Region=2
+// T6  (62.3µs): Write with different QoS levels demonstrating priority
+// T7  (64.5µs): FIXED burst with QoS=10
+// T8  (67.3µs): WRAP burst with Region=3
+// T9  (69.9µs): Narrow transfer with QoS=7
+// T10 (71.9µs): Write error with QoS=0
+// T11 (73.5µs): Exclusive read with QoS=12
+// T12 (75.1µs): Exclusive write with QoS=12
+// T13 (77.1µs): No write interleaving (strict ordering test)
+// T14 (81.5µs): Multiple transactions with varying QoS (0, 5, 10, 15)
+// T15 (85.9µs): User-defined signals test (if implemented)
+
+// Init the record with name and time base (nanoseconds)
+producer.initRecord("AXI4 Bus Example - Protocol Features",TimeBase.ns);
+
+// Create a scope and add AXI4 signals
+var scope = producer.addScope(null, "AXI4 Bus");
+var clk = producer.addSignal(scope, "ACLK", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+var rst = producer.addSignal(scope, "ARESETn", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+
+// Write Address Channel (AXI4)
+var awid = producer.addSignal(scope, "AWID", null,null, ISample.DATA_TYPE_LOGIC,4,ISample.FORMAT_DEFAULT);
+var awaddr = producer.addSignal(scope, "AWADDR", null,null, ISample.DATA_TYPE_LOGIC,32,ISample.FORMAT_DEFAULT);
+var awlen = producer.addSignal(scope, "AWLEN", null,null, ISample.DATA_TYPE_LOGIC,8,ISample.FORMAT_DEFAULT); // 8-bit in AXI4!
+var awsize = producer.addSignal(scope, "AWSIZE", null,null, ISample.DATA_TYPE_LOGIC,3,ISample.FORMAT_DEFAULT);
+var awburst = producer.addSignal(scope, "AWBURST", null,null, ISample.DATA_TYPE_LOGIC,2,ISample.FORMAT_DEFAULT);
+var awlock = producer.addSignal(scope, "AWLOCK", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT); // 1-bit in AXI4!
+var awcache = producer.addSignal(scope, "AWCACHE", null,null, ISample.DATA_TYPE_LOGIC,4,ISample.FORMAT_DEFAULT);
+var awprot = producer.addSignal(scope, "AWPROT", null,null, ISample.DATA_TYPE_LOGIC,3,ISample.FORMAT_DEFAULT);
+var awqos = producer.addSignal(scope, "AWQOS", null,null, ISample.DATA_TYPE_LOGIC,4,ISample.FORMAT_DEFAULT); // AXI4 NEW
+var awregion = producer.addSignal(scope, "AWREGION", null,null, ISample.DATA_TYPE_LOGIC,4,ISample.FORMAT_DEFAULT); // AXI4 NEW
+var awvalid = producer.addSignal(scope, "AWVALID", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+var awready = producer.addSignal(scope, "AWREADY", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+
+// Write Data Channel (AXI4 - NO WID!)
+var wdata = producer.addSignal(scope, "WDATA", null,null, ISample.DATA_TYPE_LOGIC,32,ISample.FORMAT_DEFAULT);
+var wstrb = producer.addSignal(scope, "WSTRB", null,null, ISample.DATA_TYPE_LOGIC,4,ISample.FORMAT_DEFAULT);
+var wlast = producer.addSignal(scope, "WLAST", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+var wvalid = producer.addSignal(scope, "WVALID", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+var wready = producer.addSignal(scope, "WREADY", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+
+// Write Response Channel
+var bid = producer.addSignal(scope, "BID", null,null, ISample.DATA_TYPE_LOGIC,4,ISample.FORMAT_DEFAULT);
+var bresp = producer.addSignal(scope, "BRESP", null,null, ISample.DATA_TYPE_LOGIC,2,ISample.FORMAT_DEFAULT);
+var bvalid = producer.addSignal(scope, "BVALID", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+var bready = producer.addSignal(scope, "BREADY", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+
+// Read Address Channel (AXI4)
+var arid = producer.addSignal(scope, "ARID", null,null, ISample.DATA_TYPE_LOGIC,4,ISample.FORMAT_DEFAULT);
+var araddr = producer.addSignal(scope, "ARADDR", null,null, ISample.DATA_TYPE_LOGIC,32,ISample.FORMAT_DEFAULT);
+var arlen = producer.addSignal(scope, "ARLEN", null,null, ISample.DATA_TYPE_LOGIC,8,ISample.FORMAT_DEFAULT); // 8-bit in AXI4!
+var arsize = producer.addSignal(scope, "ARSIZE", null,null, ISample.DATA_TYPE_LOGIC,3,ISample.FORMAT_DEFAULT);
+var arburst = producer.addSignal(scope, "ARBURST", null,null, ISample.DATA_TYPE_LOGIC,2,ISample.FORMAT_DEFAULT);
+var arlock = producer.addSignal(scope, "ARLOCK", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT); // 1-bit in AXI4!
+var arcache = producer.addSignal(scope, "ARCACHE", null,null, ISample.DATA_TYPE_LOGIC,4,ISample.FORMAT_DEFAULT);
+var arprot = producer.addSignal(scope, "ARPROT", null,null, ISample.DATA_TYPE_LOGIC,3,ISample.FORMAT_DEFAULT);
+var arqos = producer.addSignal(scope, "ARQOS", null,null, ISample.DATA_TYPE_LOGIC,4,ISample.FORMAT_DEFAULT); // AXI4 NEW
+var arregion = producer.addSignal(scope, "ARREGION", null,null, ISample.DATA_TYPE_LOGIC,4,ISample.FORMAT_DEFAULT); // AXI4 NEW
+var arvalid = producer.addSignal(scope, "ARVALID", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+var arready = producer.addSignal(scope, "ARREADY", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+
+// Read Data Channel
+var rid = producer.addSignal(scope, "RID", null,null, ISample.DATA_TYPE_LOGIC,4,ISample.FORMAT_DEFAULT);
+var rdata = producer.addSignal(scope, "RDATA", null,null, ISample.DATA_TYPE_LOGIC,32,ISample.FORMAT_DEFAULT);
+var rresp = producer.addSignal(scope, "RRESP", null,null, ISample.DATA_TYPE_LOGIC,2,ISample.FORMAT_DEFAULT);
+var rlast = producer.addSignal(scope, "RLAST", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+var rvalid = producer.addSignal(scope, "RVALID", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+var rready = producer.addSignal(scope, "RREADY", null,null, ISample.DATA_TYPE_LOGIC,1,ISample.FORMAT_DEFAULT);
+
+// Calculate MAX_T
+var MAX_T = 90000l; // 90µs total
+
+var t = 0l;
+producer.open(t);
+
+// Initialize all signals
+producer.getWriter(awid).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(awaddr).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(awlen).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(awsize).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(awburst).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(awlock).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(awcache).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(awprot).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(awqos).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(awregion).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(awvalid).write(0l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(0l, false, Logic.valueOf(false));
+producer.getWriter(wdata).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(wstrb).write(0l, false, Logic.valueOf(0xFl));
+producer.getWriter(wlast).write(0l, false, Logic.valueOf(false));
+producer.getWriter(wvalid).write(0l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(0l, false, Logic.valueOf(false));
+producer.getWriter(bid).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(bresp).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(bvalid).write(0l, false, Logic.valueOf(false));
+producer.getWriter(bready).write(0l, false, Logic.valueOf(false));
+producer.getWriter(arid).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(araddr).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(arlen).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(arsize).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(arburst).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(arlock).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(arcache).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(arprot).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(arqos).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(arregion).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(arvalid).write(0l, false, Logic.valueOf(false));
+producer.getWriter(arready).write(0l, false, Logic.valueOf(false));
+producer.getWriter(rid).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(rdata).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(rresp).write(0l, false, Logic.valueOf(0l));
+producer.getWriter(rlast).write(0l, false, Logic.valueOf(false));
+producer.getWriter(rvalid).write(0l, false, Logic.valueOf(false));
+producer.getWriter(rready).write(0l, false, Logic.valueOf(false));
+producer.getWriter(rst).write(0l, false, Logic.valueOf(false));
+
+// Generate clock
+var writer = producer.getWriter(clk);
+t = 0l;
+while (t < MAX_T){
+     writer.write(t, false, Logic.valueOf(t % 200 < 100));
+     t += 50;
+}
+
+producer.getWriter(rst).write(100l, false, Logic.valueOf(true));
+
+// ==================================================================================
+// T1: Single-beat write with QoS=5
+// ==================================================================================
+
+producer.getWriter(awid).write(300l, false, Logic.valueOf(0x1l));
+producer.getWriter(awaddr).write(300l, false, Logic.valueOf(0x1000l));
+producer.getWriter(awlen).write(300l, false, Logic.valueOf(0x0l));
+producer.getWriter(awsize).write(300l, false, Logic.valueOf(0x2l));
+producer.getWriter(awburst).write(300l, false, Logic.valueOf(0x1l));
+producer.getWriter(awlock).write(300l, false, Logic.valueOf(0x0l));
+producer.getWriter(awcache).write(300l, false, Logic.valueOf(0x3l)); // Mod/Buf
+producer.getWriter(awprot).write(300l, false, Logic.valueOf(0x0l)); // Data/Sec/Unpriv
+producer.getWriter(awqos).write(300l, false, Logic.valueOf(0x5l)); // QoS=5
+producer.getWriter(awregion).write(300l, false, Logic.valueOf(0x0l));
+producer.getWriter(awvalid).write(300l, false, Logic.valueOf(true));
+producer.getWriter(awready).write(300l, false, Logic.valueOf(true));
+
+producer.getWriter(awvalid).write(500l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(500l, false, Logic.valueOf(false));
+
+producer.getWriter(wdata).write(500l, false, Logic.valueOf(0xABCD1234l));
+producer.getWriter(wstrb).write(500l, false, Logic.valueOf(0xFl));
+producer.getWriter(wlast).write(500l, false, Logic.valueOf(true));
+producer.getWriter(wvalid).write(500l, false, Logic.valueOf(true));
+producer.getWriter(wready).write(500l, false, Logic.valueOf(true));
+
+producer.getWriter(wvalid).write(700l, false, Logic.valueOf(false));
+producer.getWriter(wlast).write(700l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(700l, false, Logic.valueOf(false));
+
+producer.getWriter(bid).write(900l, false, Logic.valueOf(0x1l));
+producer.getWriter(bresp).write(900l, false, Logic.valueOf(0l));
+producer.getWriter(bvalid).write(900l, false, Logic.valueOf(true));
+producer.getWriter(bready).write(900l, false, Logic.valueOf(true));
+
+producer.getWriter(bvalid).write(1100l, false, Logic.valueOf(false));
+producer.getWriter(bready).write(1100l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T2: 4-beat write with QoS=3, Region=1
+// ==================================================================================
+
+producer.getWriter(awid).write(1100l, false, Logic.valueOf(0x2l));
+producer.getWriter(awaddr).write(1100l, false, Logic.valueOf(0x2000l));
+producer.getWriter(awlen).write(1100l, false, Logic.valueOf(0x3l));
+producer.getWriter(awcache).write(1100l, false, Logic.valueOf(0xFl)); // RAlloc/WAlloc/Mod/Buf (full cacheable)
+producer.getWriter(awprot).write(1100l, false, Logic.valueOf(0x1l)); // Data/Sec/Priv
+producer.getWriter(awqos).write(1100l, false, Logic.valueOf(0x3l)); // QoS=3
+producer.getWriter(awregion).write(1100l, false, Logic.valueOf(0x1l)); // Region=1
+producer.getWriter(awvalid).write(1100l, false, Logic.valueOf(true));
+producer.getWriter(awready).write(1100l, false, Logic.valueOf(true));
+
+producer.getWriter(awvalid).write(1300l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(1300l, false, Logic.valueOf(false));
+
+var beat = 0;
+while (beat < 4) {
+    var wt = 1300l + (beat * 200);
+    producer.getWriter(wdata).write(wt, false, Logic.valueOf(0x2000l + beat));
+    producer.getWriter(wlast).write(wt, false, Logic.valueOf(beat == 3));
+    producer.getWriter(wvalid).write(wt, false, Logic.valueOf(true));
+    producer.getWriter(wready).write(wt, false, Logic.valueOf(true));
+    beat++;
+}
+
+producer.getWriter(wvalid).write(2100l, false, Logic.valueOf(false));
+producer.getWriter(wlast).write(2100l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(2100l, false, Logic.valueOf(false));
+
+producer.getWriter(bid).write(2300l, false, Logic.valueOf(0x2l));
+producer.getWriter(bresp).write(2300l, false, Logic.valueOf(0l));
+producer.getWriter(bvalid).write(2300l, false, Logic.valueOf(true));
+producer.getWriter(bready).write(2300l, false, Logic.valueOf(true));
+
+producer.getWriter(bvalid).write(2500l, false, Logic.valueOf(false));
+producer.getWriter(bready).write(2500l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T3: Extended burst (32 beats, AWLEN=31) - AXI4 feature
+// ==================================================================================
+
+producer.getWriter(awid).write(2500l, false, Logic.valueOf(0x3l));
+producer.getWriter(awaddr).write(2500l, false, Logic.valueOf(0x3000l));
+producer.getWriter(awlen).write(2500l, false, Logic.valueOf(0x1Fl)); // 31 = 32 beats
+producer.getWriter(awcache).write(2500l, false, Logic.valueOf(0x0l)); // Device Non-bufferable
+producer.getWriter(awprot).write(2500l, false, Logic.valueOf(0x2l)); // Data/NonSec/Unpriv
+producer.getWriter(awqos).write(2500l, false, Logic.valueOf(0x8l));
+producer.getWriter(awregion).write(2500l, false, Logic.valueOf(0x0l));
+producer.getWriter(awvalid).write(2500l, false, Logic.valueOf(true));
+producer.getWriter(awready).write(2500l, false, Logic.valueOf(true));
+
+producer.getWriter(awvalid).write(2700l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(2700l, false, Logic.valueOf(false));
+
+beat = 0;
+while (beat < 32) {
+    var wt = 2700l + (beat * 200);
+    producer.getWriter(wdata).write(wt, false, Logic.valueOf(0x3000l + beat));
+    producer.getWriter(wlast).write(wt, false, Logic.valueOf(beat == 31));
+    producer.getWriter(wvalid).write(wt, false, Logic.valueOf(true));
+    producer.getWriter(wready).write(wt, false, Logic.valueOf(true));
+    beat++;
+}
+
+producer.getWriter(wvalid).write(9100l, false, Logic.valueOf(false));
+producer.getWriter(wlast).write(9100l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(9100l, false, Logic.valueOf(false));
+
+producer.getWriter(bid).write(9300l, false, Logic.valueOf(0x3l));
+producer.getWriter(bresp).write(9300l, false, Logic.valueOf(0l));
+producer.getWriter(bvalid).write(9300l, false, Logic.valueOf(true));
+producer.getWriter(bready).write(9300l, false, Logic.valueOf(true));
+
+producer.getWriter(bvalid).write(9500l, false, Logic.valueOf(false));
+producer.getWriter(bready).write(9500l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T4: Maximum burst (256 beats, AWLEN=255) - AXI4 ONLY!
+// ==================================================================================
+
+producer.getWriter(awid).write(9700l, false, Logic.valueOf(0x4l));
+producer.getWriter(awaddr).write(9700l, false, Logic.valueOf(0x4000l));
+producer.getWriter(awlen).write(9700l, false, Logic.valueOf(0xFFl)); // 255 = 256 beats MAX!
+producer.getWriter(awcache).write(9700l, false, Logic.valueOf(0xEl)); // RAlloc/WAlloc/Mod (write-back)
+producer.getWriter(awprot).write(9700l, false, Logic.valueOf(0x3l)); // Data/NonSec/Priv
+producer.getWriter(awqos).write(9700l, false, Logic.valueOf(0xFl)); // Urgent
+producer.getWriter(awregion).write(9700l, false, Logic.valueOf(0x2l));
+producer.getWriter(awvalid).write(9700l, false, Logic.valueOf(true));
+producer.getWriter(awready).write(9700l, false, Logic.valueOf(true));
+
+producer.getWriter(awvalid).write(9900l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(9900l, false, Logic.valueOf(false));
+
+beat = 0;
+while (beat < 256) {
+    var wt = 9900l + (beat * 200);
+    producer.getWriter(wdata).write(wt, false, Logic.valueOf(0x4000l + beat));
+    producer.getWriter(wlast).write(wt, false, Logic.valueOf(beat == 255));
+    producer.getWriter(wvalid).write(wt, false, Logic.valueOf(true));
+    producer.getWriter(wready).write(wt, false, Logic.valueOf(true));
+    beat++;
+}
+
+producer.getWriter(wvalid).write(61100l, false, Logic.valueOf(false));
+producer.getWriter(wlast).write(61100l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(61100l, false, Logic.valueOf(false));
+
+producer.getWriter(bid).write(61300l, false, Logic.valueOf(0x4l));
+producer.getWriter(bresp).write(61300l, false, Logic.valueOf(0l));
+producer.getWriter(bvalid).write(61300l, false, Logic.valueOf(true));
+producer.getWriter(bready).write(61300l, false, Logic.valueOf(true));
+
+producer.getWriter(bvalid).write(61500l, false, Logic.valueOf(false));
+producer.getWriter(bready).write(61500l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T5: Read with QoS=15 (urgent), Region=2
+// ==================================================================================
+
+producer.getWriter(arid).write(62300l, false, Logic.valueOf(0x5l));
+producer.getWriter(araddr).write(62300l, false, Logic.valueOf(0x5000l));
+producer.getWriter(arlen).write(62300l, false, Logic.valueOf(0x3l));
+producer.getWriter(arsize).write(62300l, false, Logic.valueOf(0x2l));
+producer.getWriter(arburst).write(62300l, false, Logic.valueOf(0x1l));
+producer.getWriter(arlock).write(62300l, false, Logic.valueOf(0x0l));
+producer.getWriter(arcache).write(62300l, false, Logic.valueOf(0x6l)); // WAlloc/Mod (write-through)
+producer.getWriter(arprot).write(62300l, false, Logic.valueOf(0x4l)); // Instr/Sec/Unpriv
+producer.getWriter(arqos).write(62300l, false, Logic.valueOf(0xFl)); // Urgent!
+producer.getWriter(arregion).write(62300l, false, Logic.valueOf(0x2l));
+producer.getWriter(arvalid).write(62300l, false, Logic.valueOf(true));
+producer.getWriter(arready).write(62300l, false, Logic.valueOf(true));
+
+producer.getWriter(arvalid).write(62500l, false, Logic.valueOf(false));
+producer.getWriter(arready).write(62500l, false, Logic.valueOf(false));
+
+beat = 0;
+while (beat < 4) {
+    var rt = 62700l + (beat * 200);
+    producer.getWriter(rid).write(rt, false, Logic.valueOf(0x5l));
+    producer.getWriter(rdata).write(rt, false, Logic.valueOf(0x5000l + beat));
+    producer.getWriter(rresp).write(rt, false, Logic.valueOf(0l));
+    producer.getWriter(rlast).write(rt, false, Logic.valueOf(beat == 3));
+    producer.getWriter(rvalid).write(rt, false, Logic.valueOf(true));
+    producer.getWriter(rready).write(rt, false, Logic.valueOf(true));
+    beat++;
+}
+
+producer.getWriter(rvalid).write(63500l, false, Logic.valueOf(false));
+producer.getWriter(rlast).write(63500l, false, Logic.valueOf(false));
+producer.getWriter(rready).write(63500l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T6: Write with QoS=10
+// ==================================================================================
+
+producer.getWriter(awid).write(64300l, false, Logic.valueOf(0x6l));
+producer.getWriter(awaddr).write(64300l, false, Logic.valueOf(0x6000l));
+producer.getWriter(awlen).write(64300l, false, Logic.valueOf(0x0l));
+producer.getWriter(awsize).write(64300l, false, Logic.valueOf(0x2l));
+producer.getWriter(awburst).write(64300l, false, Logic.valueOf(0x1l));
+producer.getWriter(awlock).write(64300l, false, Logic.valueOf(0x0l));
+producer.getWriter(awcache).write(64300l, false, Logic.valueOf(0x1l)); // Buf (device bufferable)
+producer.getWriter(awprot).write(64300l, false, Logic.valueOf(0x5l)); // Instr/Sec/Priv
+producer.getWriter(awqos).write(64300l, false, Logic.valueOf(0xAl)); // QoS=10
+producer.getWriter(awregion).write(64300l, false, Logic.valueOf(0x1l));
+producer.getWriter(awvalid).write(64300l, false, Logic.valueOf(true));
+producer.getWriter(awready).write(64300l, false, Logic.valueOf(true));
+
+producer.getWriter(awvalid).write(64500l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(64500l, false, Logic.valueOf(false));
+
+producer.getWriter(wdata).write(64500l, false, Logic.valueOf(0x6000l));
+producer.getWriter(wlast).write(64500l, false, Logic.valueOf(true));
+producer.getWriter(wvalid).write(64500l, false, Logic.valueOf(true));
+producer.getWriter(wready).write(64500l, false, Logic.valueOf(true));
+
+producer.getWriter(wvalid).write(64700l, false, Logic.valueOf(false));
+producer.getWriter(wlast).write(64700l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(64700l, false, Logic.valueOf(false));
+
+producer.getWriter(bid).write(64900l, false, Logic.valueOf(0x6l));
+producer.getWriter(bresp).write(64900l, false, Logic.valueOf(0l));
+producer.getWriter(bvalid).write(64900l, false, Logic.valueOf(true));
+producer.getWriter(bready).write(64900l, false, Logic.valueOf(true));
+
+producer.getWriter(bvalid).write(65100l, false, Logic.valueOf(false));
+producer.getWriter(bready).write(65100l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T7: FIXED burst with QoS=10
+// ==================================================================================
+
+producer.getWriter(awid).write(65500l, false, Logic.valueOf(0x7l));
+producer.getWriter(awaddr).write(65500l, false, Logic.valueOf(0x7000l));
+producer.getWriter(awlen).write(65500l, false, Logic.valueOf(0x3l));
+producer.getWriter(awsize).write(65500l, false, Logic.valueOf(0x2l));
+producer.getWriter(awburst).write(65500l, false, Logic.valueOf(0x0l)); // FIXED
+producer.getWriter(awlock).write(65500l, false, Logic.valueOf(0x0l));
+producer.getWriter(awcache).write(65500l, false, Logic.valueOf(0xAl)); // RAlloc/Mod
+producer.getWriter(awprot).write(65500l, false, Logic.valueOf(0x6l)); // Instr/NonSec/Unpriv
+producer.getWriter(awqos).write(65500l, false, Logic.valueOf(0xAl));
+producer.getWriter(awregion).write(65500l, false, Logic.valueOf(0x0l));
+producer.getWriter(awvalid).write(65500l, false, Logic.valueOf(true));
+producer.getWriter(awready).write(65500l, false, Logic.valueOf(true));
+
+producer.getWriter(awvalid).write(65700l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(65700l, false, Logic.valueOf(false));
+
+beat = 0;
+while (beat < 4) {
+    var wt = 65700l + (beat * 200);
+    producer.getWriter(wdata).write(wt, false, Logic.valueOf(0x7000l + beat));
+    producer.getWriter(wlast).write(wt, false, Logic.valueOf(beat == 3));
+    producer.getWriter(wvalid).write(wt, false, Logic.valueOf(true));
+    producer.getWriter(wready).write(wt, false, Logic.valueOf(true));
+    beat++;
+}
+
+producer.getWriter(wvalid).write(66500l, false, Logic.valueOf(false));
+producer.getWriter(wlast).write(66500l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(66500l, false, Logic.valueOf(false));
+
+producer.getWriter(bid).write(66700l, false, Logic.valueOf(0x7l));
+producer.getWriter(bresp).write(66700l, false, Logic.valueOf(0l));
+producer.getWriter(bvalid).write(66700l, false, Logic.valueOf(true));
+producer.getWriter(bready).write(66700l, false, Logic.valueOf(true));
+
+producer.getWriter(bvalid).write(66900l, false, Logic.valueOf(false));
+producer.getWriter(bready).write(66900l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T8: WRAP burst with Region=3
+// ==================================================================================
+
+producer.getWriter(arid).write(67300l, false, Logic.valueOf(0x8l));
+producer.getWriter(araddr).write(67300l, false, Logic.valueOf(0x8000l));
+producer.getWriter(arlen).write(67300l, false, Logic.valueOf(0x3l));
+producer.getWriter(arsize).write(67300l, false, Logic.valueOf(0x2l));
+producer.getWriter(arburst).write(67300l, false, Logic.valueOf(0x2l)); // WRAP
+producer.getWriter(arlock).write(67300l, false, Logic.valueOf(0x0l));
+producer.getWriter(arcache).write(67300l, false, Logic.valueOf(0xCl)); // RAlloc/WAlloc
+producer.getWriter(arprot).write(67300l, false, Logic.valueOf(0x7l)); // Instr/NonSec/Priv
+producer.getWriter(arqos).write(67300l, false, Logic.valueOf(0x5l));
+producer.getWriter(arregion).write(67300l, false, Logic.valueOf(0x3l)); // Region=3
+producer.getWriter(arvalid).write(67300l, false, Logic.valueOf(true));
+producer.getWriter(arready).write(67300l, false, Logic.valueOf(true));
+
+producer.getWriter(arvalid).write(67500l, false, Logic.valueOf(false));
+producer.getWriter(arready).write(67500l, false, Logic.valueOf(false));
+
+beat = 0;
+while (beat < 4) {
+    var rt = 67700l + (beat * 200);
+    producer.getWriter(rid).write(rt, false, Logic.valueOf(0x8l));
+    producer.getWriter(rdata).write(rt, false, Logic.valueOf(0x8000l + beat));
+    producer.getWriter(rresp).write(rt, false, Logic.valueOf(0l));
+    producer.getWriter(rlast).write(rt, false, Logic.valueOf(beat == 3));
+    producer.getWriter(rvalid).write(rt, false, Logic.valueOf(true));
+    producer.getWriter(rready).write(rt, false, Logic.valueOf(true));
+    beat++;
+}
+
+producer.getWriter(rvalid).write(68500l, false, Logic.valueOf(false));
+producer.getWriter(rlast).write(68500l, false, Logic.valueOf(false));
+producer.getWriter(rready).write(68500l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T9: Narrow transfer (8-bit) with QoS=7
+// ==================================================================================
+
+producer.getWriter(awid).write(69900l, false, Logic.valueOf(0x9l));
+producer.getWriter(awaddr).write(69900l, false, Logic.valueOf(0x9000l));
+producer.getWriter(awlen).write(69900l, false, Logic.valueOf(0x0l));
+producer.getWriter(awsize).write(69900l, false, Logic.valueOf(0x0l)); // 1 byte
+producer.getWriter(awburst).write(69900l, false, Logic.valueOf(0x1l));
+producer.getWriter(awlock).write(69900l, false, Logic.valueOf(0x0l));
+producer.getWriter(awcache).write(69900l, false, Logic.valueOf(0x2l)); // Mod (modifiable, non-cacheable)
+producer.getWriter(awprot).write(69900l, false, Logic.valueOf(0x0l)); // Data/Sec/Unpriv
+producer.getWriter(awqos).write(69900l, false, Logic.valueOf(0x7l)); // QoS=7
+producer.getWriter(awregion).write(69900l, false, Logic.valueOf(0x0l));
+producer.getWriter(awvalid).write(69900l, false, Logic.valueOf(true));
+producer.getWriter(awready).write(69900l, false, Logic.valueOf(true));
+
+producer.getWriter(awvalid).write(70100l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(70100l, false, Logic.valueOf(false));
+
+producer.getWriter(wdata).write(70100l, false, Logic.valueOf(0xABl));
+producer.getWriter(wstrb).write(70100l, false, Logic.valueOf(0x1l)); // Byte 0 only
+producer.getWriter(wlast).write(70100l, false, Logic.valueOf(true));
+producer.getWriter(wvalid).write(70100l, false, Logic.valueOf(true));
+producer.getWriter(wready).write(70100l, false, Logic.valueOf(true));
+
+producer.getWriter(wvalid).write(70300l, false, Logic.valueOf(false));
+producer.getWriter(wlast).write(70300l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(70300l, false, Logic.valueOf(false));
+producer.getWriter(wstrb).write(70300l, false, Logic.valueOf(0xFl)); // Reset
+
+producer.getWriter(bid).write(70500l, false, Logic.valueOf(0x9l));
+producer.getWriter(bresp).write(70500l, false, Logic.valueOf(0l));
+producer.getWriter(bvalid).write(70500l, false, Logic.valueOf(true));
+producer.getWriter(bready).write(70500l, false, Logic.valueOf(true));
+
+producer.getWriter(bvalid).write(70700l, false, Logic.valueOf(false));
+producer.getWriter(bready).write(70700l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T10: Write error (SLVERR) with QoS=0
+// ==================================================================================
+
+producer.getWriter(awid).write(71900l, false, Logic.valueOf(0xAl));
+producer.getWriter(awaddr).write(71900l, false, Logic.valueOf(0xA000l));
+producer.getWriter(awlen).write(71900l, false, Logic.valueOf(0x0l));
+producer.getWriter(awsize).write(71900l, false, Logic.valueOf(0x2l));
+producer.getWriter(awburst).write(71900l, false, Logic.valueOf(0x1l));
+producer.getWriter(awlock).write(71900l, false, Logic.valueOf(0x0l));
+producer.getWriter(awcache).write(71900l, false, Logic.valueOf(0x0l)); // Device Non-bufferable
+producer.getWriter(awprot).write(71900l, false, Logic.valueOf(0x1l)); // Data/Sec/Priv (privileged error access)
+producer.getWriter(awqos).write(71900l, false, Logic.valueOf(0x0l)); // QoS=0 (lowest)
+producer.getWriter(awregion).write(71900l, false, Logic.valueOf(0x0l));
+producer.getWriter(awvalid).write(71900l, false, Logic.valueOf(true));
+producer.getWriter(awready).write(71900l, false, Logic.valueOf(true));
+
+producer.getWriter(awvalid).write(72100l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(72100l, false, Logic.valueOf(false));
+
+producer.getWriter(wdata).write(72100l, false, Logic.valueOf(0xBADl));
+producer.getWriter(wlast).write(72100l, false, Logic.valueOf(true));
+producer.getWriter(wvalid).write(72100l, false, Logic.valueOf(true));
+producer.getWriter(wready).write(72100l, false, Logic.valueOf(true));
+
+producer.getWriter(wvalid).write(72300l, false, Logic.valueOf(false));
+producer.getWriter(wlast).write(72300l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(72300l, false, Logic.valueOf(false));
+
+producer.getWriter(bid).write(72500l, false, Logic.valueOf(0xAl));
+producer.getWriter(bresp).write(72500l, false, Logic.valueOf(0x2l)); // SLVERR
+producer.getWriter(bvalid).write(72500l, false, Logic.valueOf(true));
+producer.getWriter(bready).write(72500l, false, Logic.valueOf(true));
+
+producer.getWriter(bvalid).write(72700l, false, Logic.valueOf(false));
+producer.getWriter(bready).write(72700l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T11: Exclusive read with QoS=12
+// ==================================================================================
+
+producer.getWriter(arid).write(73500l, false, Logic.valueOf(0xBl));
+producer.getWriter(araddr).write(73500l, false, Logic.valueOf(0xB000l));
+producer.getWriter(arlen).write(73500l, false, Logic.valueOf(0x0l));
+producer.getWriter(arsize).write(73500l, false, Logic.valueOf(0x2l));
+producer.getWriter(arburst).write(73500l, false, Logic.valueOf(0x1l));
+producer.getWriter(arlock).write(73500l, false, Logic.valueOf(0x1l)); // Exclusive
+producer.getWriter(arcache).write(73500l, false, Logic.valueOf(0xFl)); // RAlloc/WAlloc/Mod/Buf (fully cacheable)
+producer.getWriter(arprot).write(73500l, false, Logic.valueOf(0x0l)); // Data/Sec/Unpriv
+producer.getWriter(arqos).write(73500l, false, Logic.valueOf(0xCl)); // QoS=12
+producer.getWriter(arregion).write(73500l, false, Logic.valueOf(0x1l));
+producer.getWriter(arvalid).write(73500l, false, Logic.valueOf(true));
+producer.getWriter(arready).write(73500l, false, Logic.valueOf(true));
+
+producer.getWriter(arvalid).write(73700l, false, Logic.valueOf(false));
+producer.getWriter(arready).write(73700l, false, Logic.valueOf(false));
+
+producer.getWriter(rid).write(73900l, false, Logic.valueOf(0xBl));
+producer.getWriter(rdata).write(73900l, false, Logic.valueOf(0xB000l));
+producer.getWriter(rresp).write(73900l, false, Logic.valueOf(0x1l)); // EXOKAY
+producer.getWriter(rlast).write(73900l, false, Logic.valueOf(true));
+producer.getWriter(rvalid).write(73900l, false, Logic.valueOf(true));
+producer.getWriter(rready).write(73900l, false, Logic.valueOf(true));
+
+producer.getWriter(rvalid).write(74100l, false, Logic.valueOf(false));
+producer.getWriter(rlast).write(74100l, false, Logic.valueOf(false));
+producer.getWriter(rready).write(74100l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T12: Exclusive write with QoS=12
+// ==================================================================================
+
+producer.getWriter(awid).write(75100l, false, Logic.valueOf(0xCl));
+producer.getWriter(awaddr).write(75100l, false, Logic.valueOf(0xB000l)); // Same address as T11
+producer.getWriter(awlen).write(75100l, false, Logic.valueOf(0x0l));
+producer.getWriter(awsize).write(75100l, false, Logic.valueOf(0x2l));
+producer.getWriter(awburst).write(75100l, false, Logic.valueOf(0x1l));
+producer.getWriter(awlock).write(75100l, false, Logic.valueOf(0x1l)); // Exclusive
+producer.getWriter(awcache).write(75100l, false, Logic.valueOf(0xFl)); // RAlloc/WAlloc/Mod/Buf (matches T11)
+producer.getWriter(awprot).write(75100l, false, Logic.valueOf(0x0l)); // Data/Sec/Unpriv
+producer.getWriter(awqos).write(75100l, false, Logic.valueOf(0xCl)); // QoS=12
+producer.getWriter(awregion).write(75100l, false, Logic.valueOf(0x1l));
+producer.getWriter(awvalid).write(75100l, false, Logic.valueOf(true));
+producer.getWriter(awready).write(75100l, false, Logic.valueOf(true));
+
+producer.getWriter(awvalid).write(75300l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(75300l, false, Logic.valueOf(false));
+
+producer.getWriter(wdata).write(75300l, false, Logic.valueOf(0xC000l));
+producer.getWriter(wlast).write(75300l, false, Logic.valueOf(true));
+producer.getWriter(wvalid).write(75300l, false, Logic.valueOf(true));
+producer.getWriter(wready).write(75300l, false, Logic.valueOf(true));
+
+producer.getWriter(wvalid).write(75500l, false, Logic.valueOf(false));
+producer.getWriter(wlast).write(75500l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(75500l, false, Logic.valueOf(false));
+
+producer.getWriter(bid).write(75700l, false, Logic.valueOf(0xCl));
+producer.getWriter(bresp).write(75700l, false, Logic.valueOf(0x1l)); // EXOKAY
+producer.getWriter(bvalid).write(75700l, false, Logic.valueOf(true));
+producer.getWriter(bready).write(75700l, false, Logic.valueOf(true));
+
+producer.getWriter(bvalid).write(75900l, false, Logic.valueOf(false));
+producer.getWriter(bready).write(75900l, false, Logic.valueOf(false));
+
+// ==================================================================================
+// T13: Strict ordering test - two writes that must complete in order (no interleaving)
+// ==================================================================================
+
+// First write
+producer.getWriter(awid).write(77100l, false, Logic.valueOf(0xDl));
+producer.getWriter(awaddr).write(77100l, false, Logic.valueOf(0xD000l));
+producer.getWriter(awlen).write(77100l, false, Logic.valueOf(0x1l)); // 2 beats
+producer.getWriter(awsize).write(77100l, false, Logic.valueOf(0x2l));
+producer.getWriter(awburst).write(77100l, false, Logic.valueOf(0x1l));
+producer.getWriter(awlock).write(77100l, false, Logic.valueOf(0x0l));
+producer.getWriter(awcache).write(77100l, false, Logic.valueOf(0x7l)); // WAlloc/Mod/Buf
+producer.getWriter(awprot).write(77100l, false, Logic.valueOf(0x2l)); // Data/NonSec/Unpriv
+producer.getWriter(awqos).write(77100l, false, Logic.valueOf(0x5l));
+producer.getWriter(awregion).write(77100l, false, Logic.valueOf(0x0l));
+producer.getWriter(awvalid).write(77100l, false, Logic.valueOf(true));
+producer.getWriter(awready).write(77100l, false, Logic.valueOf(true));
+
+producer.getWriter(awvalid).write(77300l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(77300l, false, Logic.valueOf(false));
+
+// First write data - beat 0
+producer.getWriter(wdata).write(77300l, false, Logic.valueOf(0xD000l));
+producer.getWriter(wlast).write(77300l, false, Logic.valueOf(false));
+producer.getWriter(wvalid).write(77300l, false, Logic.valueOf(true));
+producer.getWriter(wready).write(77300l, false, Logic.valueOf(true));
+
+// First write data - beat 1
+producer.getWriter(wdata).write(77500l, false, Logic.valueOf(0xD001l));
+producer.getWriter(wlast).write(77500l, false, Logic.valueOf(true));
+
+producer.getWriter(wvalid).write(77700l, false, Logic.valueOf(false));
+producer.getWriter(wlast).write(77700l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(77700l, false, Logic.valueOf(false));
+
+// Second write address (AXI4: must wait for first write data to complete)
+producer.getWriter(awid).write(77900l, false, Logic.valueOf(0xEl));
+producer.getWriter(awaddr).write(77900l, false, Logic.valueOf(0xE000l));
+producer.getWriter(awlen).write(77900l, false, Logic.valueOf(0x1l)); // 2 beats
+producer.getWriter(awcache).write(77900l, false, Logic.valueOf(0xBl)); // RAlloc/Mod/Buf
+producer.getWriter(awprot).write(77900l, false, Logic.valueOf(0x3l)); // Data/NonSec/Priv
+producer.getWriter(awvalid).write(77900l, false, Logic.valueOf(true));
+producer.getWriter(awready).write(77900l, false, Logic.valueOf(true));
+
+producer.getWriter(awvalid).write(78100l, false, Logic.valueOf(false));
+producer.getWriter(awready).write(78100l, false, Logic.valueOf(false));
+
+// Second write data - beat 0
+producer.getWriter(wdata).write(78100l, false, Logic.valueOf(0xE000l));
+producer.getWriter(wlast).write(78100l, false, Logic.valueOf(false));
+producer.getWriter(wvalid).write(78100l, false, Logic.valueOf(true));
+producer.getWriter(wready).write(78100l, false, Logic.valueOf(true));
+
+// Second write data - beat 1
+producer.getWriter(wdata).write(78300l, false, Logic.valueOf(0xE001l));
+producer.getWriter(wlast).write(78300l, false, Logic.valueOf(true));
+
+producer.getWriter(wvalid).write(78500l, false, Logic.valueOf(false));
+producer.getWriter(wlast).write(78500l, false, Logic.valueOf(false));
+producer.getWriter(wready).write(78500l, false, Logic.valueOf(false));
+
+// Responses
+producer.getWriter(bid).write(78700l, false, Logic.valueOf(0xDl));
+producer.getWriter(bresp).write(78700l, false, Logic.valueOf(0l));
+producer.getWriter(bvalid).write(78700l, false, Logic.valueOf(true));
+producer.getWriter(bready).write(78700l, false, Logic.valueOf(true));
+
+producer.getWriter(bid).write(78900l, false, Logic.valueOf(0xEl));
+
+producer.getWriter(bvalid).write(79100l, false, Logic.valueOf(false));
+producer.getWriter(bready).write(79100l, false, Logic.valueOf(false));
+
+// Close the record
+producer.close(MAX_T);

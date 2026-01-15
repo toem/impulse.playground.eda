@@ -1,0 +1,12 @@
+{
+  "name": "impulse Playground",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "toem-de.impulse",
+        "toem-de.eda-waveform",
+        "toem-de.eda-transaction"
+      ]
+    }
+  }
+}

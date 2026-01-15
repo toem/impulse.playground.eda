@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<processors name="Signal Processors">
+    <processor.builtin name="de.toem.impulse.processor.tlmPhaseAnalyzer"/>
+    <processor.builtin name="de.toem.impulse.processor.ocpAnalyzer"/>
+    <processor.builtin name="de.toem.impulse.processor.aceAnalyzer">
+        <processor.configuration.default name="Configuration" pattern="ace">
+            <properties len="1">
+                <delay>1ps</delay>
+            </properties>
+        </processor.configuration.default>
+    </processor.builtin>
+    <processor.builtin name="de.toem.impulse.processor.axiAnaylzer">
+        <processor.configuration.default name="Configuration" pattern="axi4_intor,mem_tgt">
+            <properties len="1">
+                <delay>1ps</delay>
+            </properties>
+        </processor.configuration.default>
+    </processor.builtin>
+    <processor.builtin name="de.toem.impulse.processor.chiAnalyzer"/>
+    <processor.builtin name="de.toem.impulse.processor.logic"/>
+    <processor.builtin name="de.toem.impulse.processor.array"/>
+    <processor.builtin name="de.toem.impulse.processor.logicExtract"/>
+    <processor.builtin name="de.toem.impulse.processor.memberExtract"/>
+    <processor.builtin name="de.toem.impulse.processor.expressionFilter"/>
+    <processor.builtin name="de.toem.impulse.processor.expression">
+        <processor.configuration.default name="Derivation" description="&lt;p&gt;&lt;br&gt;&lt;/p&gt;">
+            <properties len="1">
+                <expression>var  lx:=null;&lt;br/&gt;var ly:=null;&lt;br/&gt;var x = iter.getPosition().commonBaseMultiple();&lt;br/&gt;var y = (double)*s0;&lt;br/&gt;var d = 0.0;&lt;br/&gt;if (lx!= null){&lt;br/&gt;   var dx = x-lx;&lt;br/&gt;   d = dx != 0.0 ? (y-ly)/(x-lx):Double.NaN;&lt;br/&gt;}&lt;br/&gt;lx = x;&lt;br/&gt;ly=y;&lt;br/&gt;return d;</expression>
+            </properties>
+        </processor.configuration.default>
+        <processor.configuration.default name="TrapIntegration">
+            <description>&lt;p&gt;Trapezoidal integration numerically approximates the area under a curve by summing the areas of trapezoids formed between consecutive data points.&lt;/p&gt;</description>
+            <properties len="1">
+                <expression>var  lx:=null;&lt;br/&gt;var ly:=null;&lt;br/&gt;var x = iter.getPosition().commonBaseMultiple();&lt;br/&gt;var y = (double)*s0;&lt;br/&gt;var i := 0.0;&lt;br/&gt;if (lx!= null){&lt;br/&gt;   var dx = x-lx;&lt;br/&gt;   i +=  (ly+y)/2 * (x-lx);&lt;br/&gt;}&lt;br/&gt;lx = x;&lt;br/&gt;ly=y;&lt;br/&gt;return i;</expression>
+            </properties>
+        </processor.configuration.default>
+        <processor.configuration.default name="RectIntegration">
+            <description>&lt;p&gt;Rectangular integration numerically approximates the area under a curve by summing rectangles formed using the left endpoint value and the distance between consecutive data points.&lt;/p&gt;</description>
+            <properties len="1">
+                <expression>var  lx:=null;&lt;br/&gt;var ly:=null;&lt;br/&gt;var x = iter.getPosition().commonBaseMultiple();&lt;br/&gt;var y = (double)*s0;&lt;br/&gt;var i := 0.0;&lt;br/&gt;if (lx!= null){&lt;br/&gt;   var dx = x-lx;&lt;br/&gt;   i +=  ly * (x-lx);&lt;br/&gt;}&lt;br/&gt;lx = x;&lt;br/&gt;ly=y;&lt;br/&gt;return i;</expression>
+            </properties>
+        </processor.configuration.default>
+    </processor.builtin>
+    <processor.builtin name="de.toem.impulse.processor.logicSplitter"/>
+    <processor.builtin name="de.toem.impulse.processor.structSplitter"/>
+    <processor.builtin name="de.toem.impulse.processor.arraySplitter"/>
+    <processor.builtin name="de.toem.impulse.processor.floatDistribution"/>
+    <processor.builtin name="de.toem.impulse.processor.floatStatistics"/>
+    <processor.builtin name="de.toem.impulse.processor.enumDistribution"/>
+</processors>

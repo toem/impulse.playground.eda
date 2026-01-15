@@ -1,0 +1,722 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<parts name="Parts">
+    <part.builtin name="de.toem.impulse.editor.viewer">
+        <part.configuration.record name="Default" description="Default Configuration">
+            <searchProperties len="1">
+                <expression>*s0==0b01 &amp;&amp; 
+*s1==0b000000</expression>
+            </searchProperties>
+            <part.view.record.column name="Name" visible="2" description="Name of an element." type="1"/>
+            <part.view.record.column name="Description" visible="2" type="2">
+                <description>Describes the element.&lt;br /&gt; The description field allows to use simple formatting like bold, itallic, h2 and h3 using a WYSIWYG editor.&lt;br /&gt; The internal reresentation uses html formatting.</description>
+            </part.view.record.column>
+            <part.view.record.column name="Tags" visible="2" description="Tags" type="3"/>
+            <part.view.record.column name="Type" visible="2" description="Type" type="4"/>
+            <part.view.record.column name="Location" visible="2" description="Location" type="5"/>
+            <part.view.record.column name="Signal type" visible="2" source="de.toem.impulse.disclosures.signalType" type="7">
+                <description>The data type of the signal, such as logic, float, integer, event, text, structure, or binary. Determines how the signal's samples are interpreted and processed.</description>
+            </part.view.record.column>
+            <part.view.record.column name="Scale" visible="2" source="de.toem.impulse.disclosures.signalScale" type="7">
+                <description>Defines the dimension or width of the signal, such as the number of bits in a logic signal or the size of an array. Scale helps describe the structure and capacity of the signal.</description>
+            </part.view.record.column>
+            <part.view.record.column name="Domain base" description="Domain base" source="de.toem.impulse.disclosures.domain" type="7"/>
+            <part.view.record.column name="No of events" visible="1" source="de.toem.impulse.disclosures.noOfEvents" type="7"/>
+        </part.configuration.record>
+    </part.builtin>
+    <part.builtin name="de.toem.impulse.editor.wallet"/>
+    <part.builtin name="de.toem.impulse.editor.preferences"/>
+    <part.builtin name="de.toem.impulse.parts.samples">
+        <part.configuration.samples name="Default" description="Default Configuration">
+            <part.view.samples.column name="Position" visible="2" type="2" defaultIconId="ri-map-pin-time-fill" alignment="2">
+                <description>Position of a sample in the signal domain, such as time or index. Indicates where the sample is located in the signal timeline or structure.</description>
+            </part.view.samples.column>
+            <part.view.samples.column name="Index(@)" visible="1" description="Unique index of a sample within a signal, starting from 0. Used for referencing and accessing individual samples." type="5" defaultIconId="codicon-location" alignment="2"/>
+            <part.view.samples.column name="Signal" visible="1" description="Signal to which the sample belongs. Provides context for the sample's origin." type="6" defaultIconId="ti-signal-any"/>
+            <part.view.samples.column name="End" visible="1" description="Last position or endpoint of a sample group. Marks where a group of related samples ends." type="3" defaultIconId="ri-map-pin-fill" alignment="2"/>
+            <part.view.samples.column name="Group(⋕)" visible="1" description="Group index for grouped samples. Useful for representing transactions or hierarchical data." type="7" defaultIconId="ri-group-2-line"/>
+            <part.view.samples.column name="Order" visible="1" description="Order of a sample within its group (first, intermediate, last). Indicates sequence within a group." type="8" defaultIconId="ri-list-ordered"/>
+            <part.view.samples.column name="Layer" visible="1" description="Layer of a sample within a group. Used for hierarchical or multi-layered data structures." type="9" defaultIconId="ri-list-ordered"/>
+            <part.view.samples.column name="Samples(@)" visible="1" description="Indices of all samples within a group. Useful for grouped or related data." type="10" defaultIconId="codicon-tasklist"/>
+            <part.view.samples.column name="Labels" visible="1" description="Labels or annotations attached to samples. Used for marking events or adding notes." type="11" defaultIconId="codicon-symbol-text"/>
+            <part.view.samples.column name="Relation" visible="1" description="Relations or links between samples, such as dependencies or annotations." type="12" defaultIconId="ri-arrow-right-down-line"/>
+            <part.view.samples.column name="Tag" visible="1" description="Tags or metadata for a sample or group. Used for categorization, filtering, and visualization." type="13" defaultIconId="ri-price-tag-3-line"/>
+            <part.view.samples.column name="Value" visible="1" description="Value of a sample, according to its signal type (logic, float, integer, text, etc.)." type="4" defaultIconId="codicon-symbol-value"/>
+            <part.view.samples.column name=".[0.0,2.0)" visible="1" source="[0.0,2.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".low" visible="1" source="low" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".[2.0,4.0)" visible="1" source="[2.0,4.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".[4.0,6.0)" visible="1" source="[4.0,6.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".[6.0,8.0)" visible="1" source="[6.0,8.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".[8.0,10.0)" visible="1" source="[8.0,10.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".[10.0,12.0)" visible="1" source="[10.0,12.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".[12.0,14.0)" visible="1" source="[12.0,14.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".[14.0,16.0)" visible="1" source="[14.0,16.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".high" visible="1" source="high" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".State" visible="1" source="State" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Event" visible="1" source="Event" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Cmd" visible="1" source="Cmd" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Address" visible="1" source="Address" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Length" visible="1" source="Length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Progress" visible="1" source="Progress" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".ID" visible="1" source="ID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Burst" visible="1" source="Burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Size" visible="1" source="Size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Lock" visible="1" source="Lock" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Cache" visible="1" source="Cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Prot" visible="1" source="Prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".QoS" visible="1" source="QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Region" visible="1" source="Region" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Resp" visible="1" source="Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Label" visible="1" source="Label" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Location" visible="1" source="Location" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Count" visible="1" source="Count" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Begin" visible="1" source="Begin" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".End" visible="1" source="End" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Latency" visible="1" source="Latency" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Latency.Min" source="Latency.Min" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Latency.Max" source="Latency.Max" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Latency.Med" source="Latency.Med" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Beats" visible="1" source="Beats" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Beats.Req.Min" source="Beats.Req.Min" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Beats.Req.Max" source="Beats.Req.Max" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Beats.Res.Min" source="Beats.Res.Min" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Beats.Res.Max" source="Beats.Res.Max" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Bandwidth" visible="1" source="Bandwidth" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Pending" visible="1" source="Pending" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Interleave" visible="1" source="Interleave" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Interleave.Req.Same" source="Interleave.Req.Same" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Interleave.Req.Other" source="Interleave.Req.Other" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Interleave.Res.Same" source="Interleave.Res.Same" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Interleave.Res.Other" source="Interleave.Res.Other" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".User" visible="1" source="User" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Domain" visible="1" source="Domain" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Barrier" visible="1" source="Barrier" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Snoop" visible="1" source="Snoop" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req" visible="1" source="Req" type="1" defaultIconId="codicon-symbol-enum-member" wrap="true"/>
+            <part.view.samples.column name=".Req.QoS" source="Req.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.TgtID" source="Req.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.SrcID" source="Req.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.TxnID" source="Req.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.ReturnNID" source="Req.ReturnNID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.StashNIDValid" source="Req.StashNIDValid" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.ReturnTxnID" source="Req.ReturnTxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.Opcode" source="Req.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.Size" source="Req.Size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.Addr" source="Req.Addr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.NS" source="Req.NS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.LikelyShared" source="Req.LikelyShared" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.AllowRetry" source="Req.AllowRetry" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.Order" source="Req.Order" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.PCrdType" source="Req.PCrdType" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.MemAttr" source="Req.MemAttr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.SnpAttr" source="Req.SnpAttr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.LPID" source="Req.LPID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.Excl" source="Req.Excl" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.SnoopMe" source="Req.SnoopMe" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.ExpCompAck" source="Req.ExpCompAck" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Req.TraceTag" source="Req.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0" visible="1" source="Dat0" type="1" defaultIconId="codicon-symbol-enum-member" wrap="true"/>
+            <part.view.samples.column name=".Dat0.QoS" source="Dat0.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.TgtID" source="Dat0.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.SrcID" source="Dat0.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.TxnID" source="Dat0.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.HomeNID" source="Dat0.HomeNID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.Opcode" source="Dat0.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.RespErr" source="Dat0.RespErr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.Resp" source="Dat0.Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.FwdState" source="Dat0.FwdState" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.DBID" source="Dat0.DBID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.CCID" source="Dat0.CCID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.DataID" source="Dat0.DataID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.TraceTag" source="Dat0.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.BE" source="Dat0.BE" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat0.Data" source="Dat0.Data" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1" visible="1" source="Dat1" type="1" defaultIconId="codicon-symbol-enum-member" wrap="true"/>
+            <part.view.samples.column name=".Dat1.QoS" source="Dat1.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.TgtID" source="Dat1.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.SrcID" source="Dat1.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.TxnID" source="Dat1.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.HomeNID" source="Dat1.HomeNID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.Opcode" source="Dat1.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.RespErr" source="Dat1.RespErr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.Resp" source="Dat1.Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.FwdState" source="Dat1.FwdState" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.DBID" source="Dat1.DBID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.CCID" source="Dat1.CCID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.DataID" source="Dat1.DataID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.TraceTag" source="Dat1.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.BE" source="Dat1.BE" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat1.Data" source="Dat1.Data" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2" visible="1" source="Dat2" type="1" defaultIconId="codicon-symbol-enum-member" wrap="true"/>
+            <part.view.samples.column name=".Dat2.QoS" source="Dat2.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.TgtID" source="Dat2.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.SrcID" source="Dat2.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.TxnID" source="Dat2.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.HomeNID" source="Dat2.HomeNID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.Opcode" source="Dat2.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.RespErr" source="Dat2.RespErr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.Resp" source="Dat2.Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.FwdState" source="Dat2.FwdState" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.DBID" source="Dat2.DBID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.CCID" source="Dat2.CCID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.DataID" source="Dat2.DataID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.TraceTag" source="Dat2.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.BE" source="Dat2.BE" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat2.Data" source="Dat2.Data" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3" visible="1" source="Dat3" type="1" defaultIconId="codicon-symbol-enum-member" wrap="true"/>
+            <part.view.samples.column name=".Dat3.QoS" source="Dat3.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.TgtID" source="Dat3.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.SrcID" source="Dat3.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.TxnID" source="Dat3.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.HomeNID" source="Dat3.HomeNID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.Opcode" source="Dat3.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.RespErr" source="Dat3.RespErr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.Resp" source="Dat3.Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.FwdState" source="Dat3.FwdState" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.DBID" source="Dat3.DBID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.CCID" source="Dat3.CCID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.DataID" source="Dat3.DataID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.TraceTag" source="Dat3.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.BE" source="Dat3.BE" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Dat3.Data" source="Dat3.Data" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0" visible="1" source="Rsp0" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0.QoS" source="Rsp0.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0.TgtID" source="Rsp0.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0.SrcID" source="Rsp0.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0.TxnID" source="Rsp0.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0.Opcode" source="Rsp0.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0.RespErr" source="Rsp0.RespErr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0.Resp" source="Rsp0.Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0.FwdState" source="Rsp0.FwdState" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0.DBID" source="Rsp0.DBID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0.PCrdType" source="Rsp0.PCrdType" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Rsp0.TraceTag" source="Rsp0.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Description" visible="1" source="Description" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".scvGenerator" visible="1" source="scvGenerator" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm_phase" visible="1" source="tlm_phase" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm_phase[return_path]" visible="1" source="tlm_phase[return_path]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".delay" visible="1" source="delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.id" visible="1" source="trans.axi4.id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.user[CTRL]" visible="1" source="trans.axi4.user[CTRL]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.user[DATA]" visible="1" source="trans.axi4.user[DATA]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.user[RESP]" visible="1" source="trans.axi4.user[RESP]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.length" visible="1" source="trans.axi4.length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.size" visible="1" source="trans.axi4.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.burst" visible="1" source="trans.axi4.burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.prot" visible="1" source="trans.axi4.prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.exclusive" visible="1" source="trans.axi4.exclusive" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.cache" visible="1" source="trans.axi4.cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.cache_bufferable" visible="1" source="trans.axi4.cache_bufferable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.cache_modifiable" visible="1" source="trans.axi4.cache_modifiable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.cache_write_other_alloc" visible="1" source="trans.axi4.cache_write_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.cache_read_other_alloc" visible="1" source="trans.axi4.cache_read_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.qos" visible="1" source="trans.axi4.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.region" visible="1" source="trans.axi4.region" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.uid" visible="1" source="trans.uid" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm_sync" visible="1" source="tlm_sync" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".delay[return_path]" visible="1" source="delay[return_path]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.address" visible="1" source="trans.address" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.cmd" visible="1" source="trans.cmd" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.data_ptr" visible="1" source="trans.data_ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.data_length" visible="1" source="trans.data_length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.response" visible="1" source="trans.response" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.dmi_allowed" visible="1" source="trans.dmi_allowed" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.byte_enable" visible="1" source="trans.byte_enable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.byte_enable_length" visible="1" source="trans.byte_enable_length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.streaming_width" visible="1" source="trans.streaming_width" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.gp_option" visible="1" source="trans.gp_option" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.resp" visible="1" source="trans.axi4.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".&lt;anonymous&gt;" visible="1" source="&lt;anonymous&gt;" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.command" visible="1" source="trans.command" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.data" visible="1" source="trans.data" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.response_status" visible="1" source="trans.response_status" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.dmi" visible="1" source="trans.dmi" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Origin" visible="1" source="Origin" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ptr" visible="1" source="trans.ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.id" visible="1" source="trans.ace.id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.user[CTRL]" visible="1" source="trans.ace.user[CTRL]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.user[DATA]" visible="1" source="trans.ace.user[DATA]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.length" visible="1" source="trans.ace.length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.size" visible="1" source="trans.ace.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.burst" visible="1" source="trans.ace.burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.prot" visible="1" source="trans.ace.prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.exclusive" visible="1" source="trans.ace.exclusive" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cache" visible="1" source="trans.ace.cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cache_bufferable" visible="1" source="trans.ace.cache_bufferable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cache_modifiable" visible="1" source="trans.ace.cache_modifiable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cache_allocate" visible="1" source="trans.ace.cache_allocate" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cache_other_alloc" visible="1" source="trans.ace.cache_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.qos" visible="1" source="trans.ace.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.region" visible="1" source="trans.ace.region" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.domain" visible="1" source="trans.ace.domain" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.snoop" visible="1" source="trans.ace.snoop" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.barrier" visible="1" source="trans.ace.barrier" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.unique" visible="1" source="trans.ace.unique" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.data_value" visible="1" source="trans.data_value" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.resp" visible="1" source="trans.ace.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp" visible="1" source="trans.ace.cresp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp_PassDirty" visible="1" source="trans.ace.cresp_PassDirty" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp_IsShared" visible="1" source="trans.ace.cresp_IsShared" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp_SnoopDataTransfer" visible="1" source="trans.ace.cresp_SnoopDataTransfer" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp_SnoopError" visible="1" source="trans.ace.cresp_SnoopError" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp_SnoopWasUnique" visible="1" source="trans.ace.cresp_SnoopWasUnique" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_credit.type" visible="1" source="trans.chi_credit.type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_credit.count" visible="1" source="trans.chi_credit.count" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.qos" visible="1" source="trans.chi_c.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.src_id" visible="1" source="trans.chi_c.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.txn_id" visible="1" source="trans.chi_c.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.tgt_id" visible="1" source="trans.chi_c.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.lp_id" visible="1" source="trans.chi_c.lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.return_txn_id" visible="1" source="trans.chi_c.return_txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.stash_lp_id" visible="1" source="trans.chi_c.stash_lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.size" visible="1" source="trans.chi_c.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.mem_attr" visible="1" source="trans.chi_c.mem_attr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.req.pcrd_type" visible="1" source="trans.chi_c.req.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.order" visible="1" source="trans.chi_c.order" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.endian" visible="1" source="trans.chi_c.endian" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.req.trace_tag" visible="1" source="trans.chi_c.req.trace_tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.return_n_id" visible="1" source="trans.chi_c.return_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.stash_n_id" visible="1" source="trans.chi_c.stash_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.opcode" visible="1" source="trans.chi_c.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.stash_nnode_id_valid" visible="1" source="trans.chi_c.stash_nnode_id_valid" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.stash_lp_id_valid" visible="1" source="trans.chi_c.stash_lp_id_valid" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.non_secure" visible="1" source="trans.chi_c.non_secure" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.exp_comp_ack" visible="1" source="trans.chi_c.exp_comp_ack" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.allow_retry" visible="1" source="trans.chi_c.allow_retry" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.snp_attr" visible="1" source="trans.chi_c.snp_attr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.excl" visible="1" source="trans.chi_c.excl" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.snoop_me" visible="1" source="trans.chi_c.snoop_me" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.likely_shared" visible="1" source="trans.chi_c.likely_shared" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.txn_rsvdc" visible="1" source="trans.chi_c.txn_rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.tag_op" visible="1" source="trans.chi_c.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.tag_group_id" visible="1" source="trans.chi_c.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.mpam" visible="1" source="trans.chi_c.mpam" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.db_id" visible="1" source="trans.chi_c.rsp.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.pcrd_type" visible="1" source="trans.chi_c.rsp.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.resp_err" visible="1" source="trans.chi_c.rsp.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.fwd_state" visible="1" source="trans.chi_c.rsp.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.data_pull" visible="1" source="trans.chi_c.rsp.data_pull" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.opcode" visible="1" source="trans.chi_c.rsp.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.resp" visible="1" source="trans.chi_c.rsp.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.tgt_id" visible="1" source="trans.chi_c.rsp.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.trace_tag" visible="1" source="trans.chi_c.rsp.trace_tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.tag_op" visible="1" source="trans.chi_c.rsp.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.tag_group_id" visible="1" source="trans.chi_c.rsp.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.qos" visible="1" source="trans.chi_d.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.src_id" visible="1" source="trans.chi_d.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.txn_id" visible="1" source="trans.chi_d.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.db_id" visible="1" source="trans.chi_d.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.resp_err" visible="1" source="trans.chi_d.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.resp" visible="1" source="trans.chi_d.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.fwd_state" visible="1" source="trans.chi_d.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.data_pull" visible="1" source="trans.chi_d.data_pull" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.data_source" visible="1" source="trans.chi_d.data_source" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.cc_id" visible="1" source="trans.chi_d.cc_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.data_id" visible="1" source="trans.chi_d.data_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.poison" visible="1" source="trans.chi_d.poison" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.tgt_id" visible="1" source="trans.chi_d.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.home_node_id" visible="1" source="trans.chi_d.home_node_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.opcode" visible="1" source="trans.chi_d.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.rsvdc" visible="1" source="trans.chi_d.rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.data_check" visible="1" source="trans.chi_d.data_check" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.trace_tag" visible="1" source="trans.chi_d.trace_tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.tag_op" visible="1" source="trans.chi_d.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.tag" visible="1" source="trans.chi_c.tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.tu" visible="1" source="trans.chi_c.tu" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.cache_allocate" visible="1" source="trans.axi4.cache_allocate" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.axi4.cache_other_alloc" visible="1" source="trans.axi4.cache_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".start_delay" visible="1" source="start_delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".end_delay" visible="1" source="end_delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".dmi_data.dmi_ptr" visible="1" source="dmi_data.dmi_ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+        </part.configuration.samples>
+    </part.builtin>
+    <part.builtin name="de.toem.impulse.parts.sample">
+        <part.configuration.sample name="Default" description="Default Configuration">
+            <part.view.sample.row name="Position" visible="2" type="2" defaultIconId="ri-map-pin-time-fill" alignment="2">
+                <description>Position of a sample in the signal domain, such as time or index. Indicates where the sample is located in the signal timeline or structure.</description>
+            </part.view.sample.row>
+            <part.view.sample.row name="Index(@)" visible="1" description="Unique index of a sample within a signal, starting from 0. Used for referencing and accessing individual samples." type="5" defaultIconId="codicon-location"/>
+            <part.view.sample.row name="Signal" visible="1" description="Signal to which the sample belongs. Provides context for the sample's origin." type="6" defaultIconId="ti-signal-any"/>
+            <part.view.sample.row name="End" visible="1" description="Last position or endpoint of a sample group. Marks where a group of related samples ends." type="3" defaultIconId="ri-map-pin-fill"/>
+            <part.view.sample.row name="Group(⋕)" visible="1" description="Group index for grouped samples. Useful for representing transactions or hierarchical data." type="7" defaultIconId="ri-group-2-line"/>
+            <part.view.sample.row name="Order" visible="1" description="Order of a sample within its group (first, intermediate, last). Indicates sequence within a group." type="8" defaultIconId="ri-list-ordered"/>
+            <part.view.sample.row name="Layer" visible="1" description="Layer of a sample within a group. Used for hierarchical or multi-layered data structures." type="9" defaultIconId="ri-list-ordered"/>
+            <part.view.sample.row name="Samples(@)" visible="1" description="Indices of all samples within a group. Useful for grouped or related data." type="10" defaultIconId="codicon-tasklist"/>
+            <part.view.sample.row name="Labels" visible="1" description="Labels or annotations attached to samples. Used for marking events or adding notes." type="11" defaultIconId="codicon-symbol-text"/>
+            <part.view.sample.row name="Relation" visible="1" description="Relations or links between samples, such as dependencies or annotations." type="12" defaultIconId="ri-arrow-right-down-line"/>
+            <part.view.sample.row name="Tag" visible="1" description="Tags or metadata for a sample or group. Used for categorization, filtering, and visualization." type="13" defaultIconId="ri-price-tag-3-line"/>
+            <part.view.sample.row name="Value" visible="1" description="Value of a sample, according to its signal type (logic, float, integer, text, etc.)." type="4" defaultIconId="codicon-symbol-value"/>
+            <part.view.sample.row name=".[0.0,2.0)" visible="1" source="[0.0,2.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".[2.0,4.0)" visible="1" source="[2.0,4.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".[4.0,6.0)" visible="1" source="[4.0,6.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".[6.0,8.0)" visible="1" source="[6.0,8.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".[8.0,10.0)" visible="1" source="[8.0,10.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".[10.0,12.0)" visible="1" source="[10.0,12.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".[12.0,14.0)" visible="1" source="[12.0,14.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".[14.0,16.0)" visible="1" source="[14.0,16.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".low" visible="1" source="low" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".high" visible="1" source="high" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Label" visible="1" source="Label" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Location" visible="1" source="Location" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Cmd" visible="1" source="Cmd" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Count" visible="1" source="Count" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Begin" visible="1" source="Begin" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".End" visible="1" source="End" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Latency" visible="1" source="Latency" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Latency.Min" visible="1" source="Latency.Min" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Latency.Max" visible="1" source="Latency.Max" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Latency.Med" visible="1" source="Latency.Med" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Beats" visible="1" source="Beats" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Beats.Req.Min" visible="1" source="Beats.Req.Min" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Beats.Req.Max" visible="1" source="Beats.Req.Max" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Beats.Res.Min" visible="1" source="Beats.Res.Min" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Beats.Res.Max" visible="1" source="Beats.Res.Max" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Bandwidth" visible="1" source="Bandwidth" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Pending" visible="1" source="Pending" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Interleave" visible="1" source="Interleave" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Interleave.Req.Same" visible="1" source="Interleave.Req.Same" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Interleave.Req.Other" visible="1" source="Interleave.Req.Other" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Interleave.Res.Same" visible="1" source="Interleave.Res.Same" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Interleave.Res.Other" visible="1" source="Interleave.Res.Other" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".State" visible="1" source="State" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Event" visible="1" source="Event" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Address" visible="1" source="Address" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Length" visible="1" source="Length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Progress" visible="1" source="Progress" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".ID" visible="1" source="ID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Burst" visible="1" source="Burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Size" visible="1" source="Size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Lock" visible="1" source="Lock" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Cache" visible="1" source="Cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Prot" visible="1" source="Prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".QoS" visible="1" source="QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Region" visible="1" source="Region" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Resp" visible="1" source="Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Description" visible="1" source="Description" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".User" visible="1" source="User" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Domain" visible="1" source="Domain" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Barrier" visible="1" source="Barrier" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Snoop" visible="1" source="Snoop" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req" visible="1" source="Req" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.QoS" visible="1" source="Req.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.TgtID" visible="1" source="Req.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.SrcID" visible="1" source="Req.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.TxnID" visible="1" source="Req.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.ReturnNID" visible="1" source="Req.ReturnNID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.StashNIDValid" visible="1" source="Req.StashNIDValid" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.ReturnTxnID" visible="1" source="Req.ReturnTxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.Opcode" visible="1" source="Req.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.Size" visible="1" source="Req.Size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.Addr" visible="1" source="Req.Addr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.NS" visible="1" source="Req.NS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.LikelyShared" visible="1" source="Req.LikelyShared" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.AllowRetry" visible="1" source="Req.AllowRetry" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.Order" visible="1" source="Req.Order" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.PCrdType" visible="1" source="Req.PCrdType" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.MemAttr" visible="1" source="Req.MemAttr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.SnpAttr" visible="1" source="Req.SnpAttr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.LPID" visible="1" source="Req.LPID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.Excl" visible="1" source="Req.Excl" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.SnoopMe" visible="1" source="Req.SnoopMe" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.ExpCompAck" visible="1" source="Req.ExpCompAck" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Req.TraceTag" visible="1" source="Req.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0" visible="1" source="Dat0" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.QoS" visible="1" source="Dat0.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.TgtID" visible="1" source="Dat0.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.SrcID" visible="1" source="Dat0.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.TxnID" visible="1" source="Dat0.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.HomeNID" visible="1" source="Dat0.HomeNID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.Opcode" visible="1" source="Dat0.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.RespErr" visible="1" source="Dat0.RespErr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.Resp" visible="1" source="Dat0.Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.FwdState" visible="1" source="Dat0.FwdState" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.DBID" visible="1" source="Dat0.DBID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.CCID" visible="1" source="Dat0.CCID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.DataID" visible="1" source="Dat0.DataID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.TraceTag" visible="1" source="Dat0.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.BE" visible="1" source="Dat0.BE" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat0.Data" visible="1" source="Dat0.Data" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1" visible="1" source="Dat1" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.QoS" visible="1" source="Dat1.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.TgtID" visible="1" source="Dat1.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.SrcID" visible="1" source="Dat1.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.TxnID" visible="1" source="Dat1.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.HomeNID" visible="1" source="Dat1.HomeNID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.Opcode" visible="1" source="Dat1.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.RespErr" visible="1" source="Dat1.RespErr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.Resp" visible="1" source="Dat1.Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.FwdState" visible="1" source="Dat1.FwdState" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.DBID" visible="1" source="Dat1.DBID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.CCID" visible="1" source="Dat1.CCID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.DataID" visible="1" source="Dat1.DataID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.TraceTag" visible="1" source="Dat1.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.BE" visible="1" source="Dat1.BE" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat1.Data" visible="1" source="Dat1.Data" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2" visible="1" source="Dat2" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.QoS" visible="1" source="Dat2.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.TgtID" visible="1" source="Dat2.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.SrcID" visible="1" source="Dat2.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.TxnID" visible="1" source="Dat2.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.HomeNID" visible="1" source="Dat2.HomeNID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.Opcode" visible="1" source="Dat2.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.RespErr" visible="1" source="Dat2.RespErr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.Resp" visible="1" source="Dat2.Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.FwdState" visible="1" source="Dat2.FwdState" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.DBID" visible="1" source="Dat2.DBID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.CCID" visible="1" source="Dat2.CCID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.DataID" visible="1" source="Dat2.DataID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.TraceTag" visible="1" source="Dat2.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.BE" visible="1" source="Dat2.BE" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat2.Data" visible="1" source="Dat2.Data" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3" visible="1" source="Dat3" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.QoS" visible="1" source="Dat3.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.TgtID" visible="1" source="Dat3.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.SrcID" visible="1" source="Dat3.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.TxnID" visible="1" source="Dat3.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.HomeNID" visible="1" source="Dat3.HomeNID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.Opcode" visible="1" source="Dat3.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.RespErr" visible="1" source="Dat3.RespErr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.Resp" visible="1" source="Dat3.Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.FwdState" visible="1" source="Dat3.FwdState" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.DBID" visible="1" source="Dat3.DBID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.CCID" visible="1" source="Dat3.CCID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.DataID" visible="1" source="Dat3.DataID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.TraceTag" visible="1" source="Dat3.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.BE" visible="1" source="Dat3.BE" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Dat3.Data" visible="1" source="Dat3.Data" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0" visible="1" source="Rsp0" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0.QoS" visible="1" source="Rsp0.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0.TgtID" visible="1" source="Rsp0.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0.SrcID" visible="1" source="Rsp0.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0.TxnID" visible="1" source="Rsp0.TxnID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0.Opcode" visible="1" source="Rsp0.Opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0.RespErr" visible="1" source="Rsp0.RespErr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0.Resp" visible="1" source="Rsp0.Resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0.FwdState" visible="1" source="Rsp0.FwdState" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0.DBID" visible="1" source="Rsp0.DBID" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0.PCrdType" visible="1" source="Rsp0.PCrdType" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Rsp0.TraceTag" visible="1" source="Rsp0.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".scvGenerator" visible="1" source="scvGenerator" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm_phase" visible="1" source="tlm_phase" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm_phase[return_path]" visible="1" source="tlm_phase[return_path]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".delay" visible="1" source="delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.id" visible="1" source="trans.axi4.id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.user[CTRL]" visible="1" source="trans.axi4.user[CTRL]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.user[DATA]" visible="1" source="trans.axi4.user[DATA]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.user[RESP]" visible="1" source="trans.axi4.user[RESP]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.length" visible="1" source="trans.axi4.length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.size" visible="1" source="trans.axi4.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.burst" visible="1" source="trans.axi4.burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.prot" visible="1" source="trans.axi4.prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.exclusive" visible="1" source="trans.axi4.exclusive" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.cache" visible="1" source="trans.axi4.cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.cache_bufferable" visible="1" source="trans.axi4.cache_bufferable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.cache_modifiable" visible="1" source="trans.axi4.cache_modifiable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.cache_write_other_alloc" visible="1" source="trans.axi4.cache_write_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.cache_read_other_alloc" visible="1" source="trans.axi4.cache_read_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.qos" visible="1" source="trans.axi4.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.region" visible="1" source="trans.axi4.region" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.uid" visible="1" source="trans.uid" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm_sync" visible="1" source="tlm_sync" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".delay[return_path]" visible="1" source="delay[return_path]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.address" visible="1" source="trans.address" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.cmd" visible="1" source="trans.cmd" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.data_ptr" visible="1" source="trans.data_ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.data_length" visible="1" source="trans.data_length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.response" visible="1" source="trans.response" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.dmi_allowed" visible="1" source="trans.dmi_allowed" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.byte_enable" visible="1" source="trans.byte_enable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.byte_enable_length" visible="1" source="trans.byte_enable_length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.streaming_width" visible="1" source="trans.streaming_width" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.gp_option" visible="1" source="trans.gp_option" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.resp" visible="1" source="trans.axi4.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".&lt;anonymous&gt;" visible="1" source="&lt;anonymous&gt;" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.command" visible="1" source="trans.command" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.data" visible="1" source="trans.data" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.response_status" visible="1" source="trans.response_status" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.dmi" visible="1" source="trans.dmi" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".Origin" visible="1" source="Origin" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ptr" visible="1" source="trans.ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.id" visible="1" source="trans.ace.id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.user[CTRL]" visible="1" source="trans.ace.user[CTRL]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.user[DATA]" visible="1" source="trans.ace.user[DATA]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.length" visible="1" source="trans.ace.length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.size" visible="1" source="trans.ace.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.burst" visible="1" source="trans.ace.burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.prot" visible="1" source="trans.ace.prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.exclusive" visible="1" source="trans.ace.exclusive" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.cache" visible="1" source="trans.ace.cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.cache_bufferable" visible="1" source="trans.ace.cache_bufferable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.cache_modifiable" visible="1" source="trans.ace.cache_modifiable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.cache_allocate" visible="1" source="trans.ace.cache_allocate" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.cache_other_alloc" visible="1" source="trans.ace.cache_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.qos" visible="1" source="trans.ace.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.region" visible="1" source="trans.ace.region" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.domain" visible="1" source="trans.ace.domain" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.snoop" visible="1" source="trans.ace.snoop" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.barrier" visible="1" source="trans.ace.barrier" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.unique" visible="1" source="trans.ace.unique" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.data_value" visible="1" source="trans.data_value" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.resp" visible="1" source="trans.ace.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.cresp" visible="1" source="trans.ace.cresp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.cresp_PassDirty" visible="1" source="trans.ace.cresp_PassDirty" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.cresp_IsShared" visible="1" source="trans.ace.cresp_IsShared" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.cresp_SnoopDataTransfer" visible="1" source="trans.ace.cresp_SnoopDataTransfer" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.cresp_SnoopError" visible="1" source="trans.ace.cresp_SnoopError" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.ace.cresp_SnoopWasUnique" visible="1" source="trans.ace.cresp_SnoopWasUnique" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_credit.type" visible="1" source="trans.chi_credit.type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_credit.count" visible="1" source="trans.chi_credit.count" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.qos" visible="1" source="trans.chi_c.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.src_id" visible="1" source="trans.chi_c.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.txn_id" visible="1" source="trans.chi_c.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.tgt_id" visible="1" source="trans.chi_c.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.lp_id" visible="1" source="trans.chi_c.lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.return_txn_id" visible="1" source="trans.chi_c.return_txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.stash_lp_id" visible="1" source="trans.chi_c.stash_lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.size" visible="1" source="trans.chi_c.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.mem_attr" visible="1" source="trans.chi_c.mem_attr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.req.pcrd_type" visible="1" source="trans.chi_c.req.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.order" visible="1" source="trans.chi_c.order" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.endian" visible="1" source="trans.chi_c.endian" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.req.trace_tag" visible="1" source="trans.chi_c.req.trace_tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.return_n_id" visible="1" source="trans.chi_c.return_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.stash_n_id" visible="1" source="trans.chi_c.stash_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.opcode" visible="1" source="trans.chi_c.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.stash_nnode_id_valid" visible="1" source="trans.chi_c.stash_nnode_id_valid" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.stash_lp_id_valid" visible="1" source="trans.chi_c.stash_lp_id_valid" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.non_secure" visible="1" source="trans.chi_c.non_secure" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.exp_comp_ack" visible="1" source="trans.chi_c.exp_comp_ack" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.allow_retry" visible="1" source="trans.chi_c.allow_retry" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.snp_attr" visible="1" source="trans.chi_c.snp_attr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.excl" visible="1" source="trans.chi_c.excl" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.snoop_me" visible="1" source="trans.chi_c.snoop_me" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.likely_shared" visible="1" source="trans.chi_c.likely_shared" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.txn_rsvdc" visible="1" source="trans.chi_c.txn_rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.tag_op" visible="1" source="trans.chi_c.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.tag_group_id" visible="1" source="trans.chi_c.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.mpam" visible="1" source="trans.chi_c.mpam" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.rsp.db_id" visible="1" source="trans.chi_c.rsp.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.rsp.pcrd_type" visible="1" source="trans.chi_c.rsp.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.rsp.resp_err" visible="1" source="trans.chi_c.rsp.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.rsp.fwd_state" visible="1" source="trans.chi_c.rsp.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.rsp.data_pull" visible="1" source="trans.chi_c.rsp.data_pull" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.rsp.opcode" visible="1" source="trans.chi_c.rsp.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.rsp.resp" visible="1" source="trans.chi_c.rsp.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.rsp.tgt_id" visible="1" source="trans.chi_c.rsp.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.rsp.trace_tag" visible="1" source="trans.chi_c.rsp.trace_tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.rsp.tag_op" visible="1" source="trans.chi_c.rsp.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.rsp.tag_group_id" visible="1" source="trans.chi_c.rsp.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.qos" visible="1" source="trans.chi_d.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.src_id" visible="1" source="trans.chi_d.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.txn_id" visible="1" source="trans.chi_d.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.db_id" visible="1" source="trans.chi_d.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.resp_err" visible="1" source="trans.chi_d.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.resp" visible="1" source="trans.chi_d.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.fwd_state" visible="1" source="trans.chi_d.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.data_pull" visible="1" source="trans.chi_d.data_pull" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.data_source" visible="1" source="trans.chi_d.data_source" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.cc_id" visible="1" source="trans.chi_d.cc_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.data_id" visible="1" source="trans.chi_d.data_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.poison" visible="1" source="trans.chi_d.poison" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.tgt_id" visible="1" source="trans.chi_d.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.home_node_id" visible="1" source="trans.chi_d.home_node_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.opcode" visible="1" source="trans.chi_d.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.rsvdc" visible="1" source="trans.chi_d.rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.data_check" visible="1" source="trans.chi_d.data_check" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.trace_tag" visible="1" source="trans.chi_d.trace_tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_d.tag_op" visible="1" source="trans.chi_d.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.tag" visible="1" source="trans.chi_c.tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.chi_c.tu" visible="1" source="trans.chi_c.tu" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.cache_allocate" visible="1" source="trans.axi4.cache_allocate" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans.axi4.cache_other_alloc" visible="1" source="trans.axi4.cache_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".start_delay" visible="1" source="start_delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".end_delay" visible="1" source="end_delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".dmi_data.dmi_ptr" visible="1" source="dmi_data.dmi_ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+        </part.configuration.sample>
+    </part.builtin>
+    <part.builtin name="de.toem.impulse.dialog.viewSelect"/>
+    <part.builtin name="de.toem.impulse.dialog.partConfigurationSelect"/>
+    <part.builtin name="de.toem.impulse.dialog.find"/>
+    <part.builtin name="de.toem.toolkits.dialog.about"/>
+    <part.builtin name="record"/>
+    <part.builtin name="record.scope"/>
+    <part.builtin name="record.signal"/>
+    <part.builtin name="record.proxy"/>
+    <part.builtin name="record.interface"/>
+    <part.builtin name="record.include"/>
+    <part.builtin name="record.analysis"/>
+    <part.builtin name="record.source"/>
+    <part.builtin name="record.relation"/>
+    <part.builtin name="views"/>
+    <part.builtin name="view"/>
+    <part.builtin name="view.cursor"/>
+    <part.builtin name="view.axis"/>
+    <part.builtin name="view.folder"/>
+    <part.builtin name="view.signal"/>
+    <part.builtin name="view.deduced"/>
+    <part.builtin name="view.source"/>
+    <part.builtin name="templates"/>
+    <part.builtin name="searches"/>
+    <part.builtin name="samplesSearch.builtin"/>
+    <part.builtin name="samplesSearch.configuration.default"/>
+    <part.builtin name="samplesSearch.source"/>
+    <part.builtin name="colors"/>
+    <part.builtin name="serializers"/>
+    <part.builtin name="parts"/>
+    <part.builtin name="commands"/>
+    <part.builtin name="part.builtin"/>
+    <part.builtin name="part.configuration.default"/>
+    <part.builtin name="processors"/>
+    <part.builtin name="processor.builtin"/>
+    <part.builtin name="processor.configuration.default"/>
+    <part.builtin name="processor.java"/>
+    <part.builtin name="producers"/>
+    <part.builtin name="adaptors"/>
+    <part.builtin name="diagram.builtin"/>
+    <part.builtin name="diagram.configuration.default"/>
+    <part.builtin name="color.set"/>
+    <part.builtin name="color.builtin"/>
+    <part.builtin name="samplesFormatter"/>
+    <part.builtin name="samplesFormatter.builtin"/>
+    <part.builtin name="licenses"/>
+    <part.builtin name="license.key"/>
+    <part.builtin name="license.beta"/>
+    <part.builtin name="diagrams"/>
+    <part.builtin name="part.configuration.record"/>
+    <part.builtin name="part.view.record.column"/>
+    <part.builtin name="part.configuration.samples"/>
+    <part.builtin name="part.view.samples.column"/>
+    <part.builtin name="part.configuration.sample"/>
+    <part.builtin name="part.view.sample.row"/>
+    <part.builtin name="preferences.print.configuration"/>
+    <part.builtin name="cellProducer.message"/>
+    <part.builtin name="producer.builtin"/>
+    <part.builtin name="producer.configuration.default"/>
+    <part.builtin name="producer.java"/>
+    <part.builtin name="producer.configuration.java"/>
+    <part.builtin name="serializer.builtin"/>
+    <part.builtin name="serializer.configuration.default"/>
+    <part.builtin name="serializer.java"/>
+    <part.builtin name="serializer.configuration.java"/>
+    <part.builtin name="cellAdaptor.singleton"/>
+    <part.builtin name="cellAdaptor.configuration.default"/>
+    <part.builtin name="cellAdaptor.java"/>
+    <part.builtin name="cellAdaptor.configuration.java"/>
+    <part.builtin name="command.definition"/>
+    <part.builtin name="cmd.singleton"/>
+    <part.builtin name="command.dynamic"/>
+    <part.builtin name="command.menu"/>
+    <part.builtin name="command.contribution"/>
+    <part.builtin name="command.separator"/>
+    <part.builtin name="command.item"/>
+    <part.builtin name="command.bindings"/>
+    <part.builtin name="command.binding"/>
+    <part.builtin name="reader.log.pattern"/>
+    <part.builtin name="reader.log.pattern.option"/>
+    <part.builtin name="reader.log.xml"/>
+    <part.builtin name="reader.log.xml.option"/>
+    <part.builtin name="reader.log.json"/>
+    <part.builtin name="reader.log.json.option"/>
+    <part.builtin name="reader.log.yaml"/>
+    <part.builtin name="reader.log.yaml.option"/>
+    <part.builtin name="de.toem.impulse.adapter.tcp"/>
+</parts>
