@@ -34,6 +34,16 @@ impulse is a visualization and analysis workbench for signals from logs, traces,
 2) Click **Open Views** and pick a matching starter view (see below).
 3) Need help? See the impulse manual for guided tours, feature deep-dives, and troubleshooting: [toem.io/category/resources/impulse-manual/](https://toem.io/category/resources/impulse-manual/). Recommended sections: Introduction, impulse at a Glance, and Views.
 
+## Hints
+
+0. **First Startup**: When first time opening impulse, it may take a few seconds to startup the impulse server, especially if you use a slower or loaded external server.
+
+1. **License Dialog**: When opening a view for the first time, you may encounter a license dialog. During the BETA phase, this dialog informs you about the beta status and licensing information. Simply acknowledge the dialog to proceed with exploring the playground samples.
+
+2. **View Selection**: When opening a record, impulse tries to find the best view based on the signals referred to. You can see this judgment in the view selection dialog (Good, Weak, Bad). In some cases, impulse does not find the correct view automatically but opens the view selection dialog for you to select.
+
+3. **Reader Configuration**: In some cases, you may need to choose a reader configuration to add additional analysis or other record elements if you find something missing in the view.
+
 ## Advanced Features Demonstrated
 
 ### Protocol Analysis
