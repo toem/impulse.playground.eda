@@ -211,72 +211,72 @@
             <part.view.samples.column name=".trans.axi4.cache_read_other_alloc" visible="1" source="trans.axi4.cache_read_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.axi4.qos" visible="1" source="trans.axi4.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.axi4.region" visible="1" source="trans.axi4.region" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.uid" visible="1" source="trans.uid" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.uid" source="trans.uid" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".tlm_sync" visible="1" source="tlm_sync" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".delay[return_path]" visible="1" source="delay[return_path]" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.address" visible="1" source="trans.address" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.cmd" visible="1" source="trans.cmd" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.data_ptr" visible="1" source="trans.data_ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.data_ptr" source="trans.data_ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.data_length" visible="1" source="trans.data_length" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.response" visible="1" source="trans.response" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.dmi_allowed" visible="1" source="trans.dmi_allowed" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.dmi_allowed" source="trans.dmi_allowed" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.byte_enable" visible="1" source="trans.byte_enable" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.byte_enable_length" visible="1" source="trans.byte_enable_length" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.streaming_width" visible="1" source="trans.streaming_width" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.gp_option" visible="1" source="trans.gp_option" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.byte_enable_length" source="trans.byte_enable_length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.streaming_width" source="trans.streaming_width" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.gp_option" source="trans.gp_option" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.axi4.resp" visible="1" source="trans.axi4.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".&lt;anonymous&gt;" visible="1" source="&lt;anonymous&gt;" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.command" visible="1" source="trans.command" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.data" visible="1" source="trans.data" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.response_status" visible="1" source="trans.response_status" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.dmi" visible="1" source="trans.dmi" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".Origin" visible="1" source="Origin" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ptr" visible="1" source="trans.ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Origin" source="Origin" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ptr" source="trans.ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.ace.id" visible="1" source="trans.ace.id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.user[CTRL]" visible="1" source="trans.ace.user[CTRL]" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.user[DATA]" visible="1" source="trans.ace.user[DATA]" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.length" visible="1" source="trans.ace.length" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.size" visible="1" source="trans.ace.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.burst" visible="1" source="trans.ace.burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.prot" visible="1" source="trans.ace.prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.exclusive" visible="1" source="trans.ace.exclusive" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.cache" visible="1" source="trans.ace.cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.cache_bufferable" visible="1" source="trans.ace.cache_bufferable" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.cache_modifiable" visible="1" source="trans.ace.cache_modifiable" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.cache_allocate" visible="1" source="trans.ace.cache_allocate" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.cache_other_alloc" visible="1" source="trans.ace.cache_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.qos" visible="1" source="trans.ace.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.region" visible="1" source="trans.ace.region" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.domain" visible="1" source="trans.ace.domain" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.snoop" visible="1" source="trans.ace.snoop" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.barrier" visible="1" source="trans.ace.barrier" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.unique" visible="1" source="trans.ace.unique" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.user[CTRL]" source="trans.ace.user[CTRL]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.user[DATA]" source="trans.ace.user[DATA]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.length" source="trans.ace.length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.size" source="trans.ace.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.burst" source="trans.ace.burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.prot" source="trans.ace.prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.exclusive" source="trans.ace.exclusive" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cache" source="trans.ace.cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cache_bufferable" source="trans.ace.cache_bufferable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cache_modifiable" source="trans.ace.cache_modifiable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cache_allocate" source="trans.ace.cache_allocate" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cache_other_alloc" source="trans.ace.cache_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.qos" source="trans.ace.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.region" source="trans.ace.region" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.domain" source="trans.ace.domain" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.snoop" source="trans.ace.snoop" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.barrier" source="trans.ace.barrier" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.unique" source="trans.ace.unique" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.data_value" visible="1" source="trans.data_value" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.resp" visible="1" source="trans.ace.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.cresp" visible="1" source="trans.ace.cresp" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.cresp_PassDirty" visible="1" source="trans.ace.cresp_PassDirty" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.cresp_IsShared" visible="1" source="trans.ace.cresp_IsShared" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.cresp_SnoopDataTransfer" visible="1" source="trans.ace.cresp_SnoopDataTransfer" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.cresp_SnoopError" visible="1" source="trans.ace.cresp_SnoopError" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.cresp_SnoopWasUnique" visible="1" source="trans.ace.cresp_SnoopWasUnique" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.resp" source="trans.ace.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp" source="trans.ace.cresp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp_PassDirty" source="trans.ace.cresp_PassDirty" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp_IsShared" source="trans.ace.cresp_IsShared" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp_SnoopDataTransfer" source="trans.ace.cresp_SnoopDataTransfer" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp_SnoopError" source="trans.ace.cresp_SnoopError" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.cresp_SnoopWasUnique" source="trans.ace.cresp_SnoopWasUnique" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_credit.type" visible="1" source="trans.chi_credit.type" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_credit.count" visible="1" source="trans.chi_credit.count" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.qos" visible="1" source="trans.chi_c.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.src_id" visible="1" source="trans.chi_c.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.txn_id" visible="1" source="trans.chi_c.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.tgt_id" visible="1" source="trans.chi_c.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.lp_id" visible="1" source="trans.chi_c.lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.return_txn_id" visible="1" source="trans.chi_c.return_txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.stash_lp_id" visible="1" source="trans.chi_c.stash_lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.size" visible="1" source="trans.chi_c.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.mem_attr" visible="1" source="trans.chi_c.mem_attr" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.req.pcrd_type" visible="1" source="trans.chi_c.req.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.order" visible="1" source="trans.chi_c.order" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.qos" source="trans.chi_c.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.src_id" source="trans.chi_c.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.txn_id" source="trans.chi_c.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.tgt_id" source="trans.chi_c.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.lp_id" source="trans.chi_c.lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.return_txn_id" source="trans.chi_c.return_txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.stash_lp_id" source="trans.chi_c.stash_lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.size" source="trans.chi_c.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.mem_attr" source="trans.chi_c.mem_attr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.req.pcrd_type" source="trans.chi_c.req.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.order" source="trans.chi_c.order" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_c.endian" visible="1" source="trans.chi_c.endian" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_c.req.trace_tag" visible="1" source="trans.chi_c.req.trace_tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.return_n_id" visible="1" source="trans.chi_c.return_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.stash_n_id" visible="1" source="trans.chi_c.stash_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.opcode" visible="1" source="trans.chi_c.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.return_n_id" source="trans.chi_c.return_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.stash_n_id" source="trans.chi_c.stash_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.opcode" source="trans.chi_c.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_c.stash_nnode_id_valid" visible="1" source="trans.chi_c.stash_nnode_id_valid" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_c.stash_lp_id_valid" visible="1" source="trans.chi_c.stash_lp_id_valid" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_c.non_secure" visible="1" source="trans.chi_c.non_secure" type="1" defaultIconId="codicon-symbol-enum-member"/>
@@ -286,47 +286,143 @@
             <part.view.samples.column name=".trans.chi_c.excl" visible="1" source="trans.chi_c.excl" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_c.snoop_me" visible="1" source="trans.chi_c.snoop_me" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_c.likely_shared" visible="1" source="trans.chi_c.likely_shared" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.txn_rsvdc" visible="1" source="trans.chi_c.txn_rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.tag_op" visible="1" source="trans.chi_c.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.tag_group_id" visible="1" source="trans.chi_c.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.mpam" visible="1" source="trans.chi_c.mpam" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.rsp.db_id" visible="1" source="trans.chi_c.rsp.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.rsp.pcrd_type" visible="1" source="trans.chi_c.rsp.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.rsp.resp_err" visible="1" source="trans.chi_c.rsp.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.rsp.fwd_state" visible="1" source="trans.chi_c.rsp.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.txn_rsvdc" source="trans.chi_c.txn_rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.tag_op" source="trans.chi_c.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.tag_group_id" source="trans.chi_c.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.mpam" source="trans.chi_c.mpam" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.db_id" source="trans.chi_c.rsp.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.pcrd_type" source="trans.chi_c.rsp.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.resp_err" source="trans.chi_c.rsp.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.fwd_state" source="trans.chi_c.rsp.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_c.rsp.data_pull" visible="1" source="trans.chi_c.rsp.data_pull" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.rsp.opcode" visible="1" source="trans.chi_c.rsp.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.rsp.resp" visible="1" source="trans.chi_c.rsp.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.rsp.tgt_id" visible="1" source="trans.chi_c.rsp.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.opcode" source="trans.chi_c.rsp.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.resp" source="trans.chi_c.rsp.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.tgt_id" source="trans.chi_c.rsp.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_c.rsp.trace_tag" visible="1" source="trans.chi_c.rsp.trace_tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.rsp.tag_op" visible="1" source="trans.chi_c.rsp.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.rsp.tag_group_id" visible="1" source="trans.chi_c.rsp.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.qos" visible="1" source="trans.chi_d.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.src_id" visible="1" source="trans.chi_d.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.txn_id" visible="1" source="trans.chi_d.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.db_id" visible="1" source="trans.chi_d.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.resp_err" visible="1" source="trans.chi_d.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.resp" visible="1" source="trans.chi_d.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.fwd_state" visible="1" source="trans.chi_d.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.data_pull" visible="1" source="trans.chi_d.data_pull" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.data_source" visible="1" source="trans.chi_d.data_source" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.cc_id" visible="1" source="trans.chi_d.cc_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.data_id" visible="1" source="trans.chi_d.data_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.poison" visible="1" source="trans.chi_d.poison" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.tgt_id" visible="1" source="trans.chi_d.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.home_node_id" visible="1" source="trans.chi_d.home_node_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.opcode" visible="1" source="trans.chi_d.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.rsvdc" visible="1" source="trans.chi_d.rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.data_check" visible="1" source="trans.chi_d.data_check" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.tag_op" source="trans.chi_c.rsp.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.rsp.tag_group_id" source="trans.chi_c.rsp.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.qos" source="trans.chi_d.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.src_id" source="trans.chi_d.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.txn_id" source="trans.chi_d.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.db_id" source="trans.chi_d.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.resp_err" source="trans.chi_d.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.resp" source="trans.chi_d.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.fwd_state" source="trans.chi_d.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.data_pull" source="trans.chi_d.data_pull" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.data_source" source="trans.chi_d.data_source" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.cc_id" source="trans.chi_d.cc_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.data_id" source="trans.chi_d.data_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.poison" source="trans.chi_d.poison" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.tgt_id" source="trans.chi_d.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.home_node_id" source="trans.chi_d.home_node_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.opcode" source="trans.chi_d.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.rsvdc" source="trans.chi_d.rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.data_check" source="trans.chi_d.data_check" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.chi_d.trace_tag" visible="1" source="trans.chi_d.trace_tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_d.tag_op" visible="1" source="trans.chi_d.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.tag" visible="1" source="trans.chi_c.tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.chi_c.tu" visible="1" source="trans.chi_c.tu" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_d.tag_op" source="trans.chi_d.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.tag" source="trans.chi_c.tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.chi_c.tu" source="trans.chi_c.tu" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.axi4.cache_allocate" visible="1" source="trans.axi4.cache_allocate" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.axi4.cache_other_alloc" visible="1" source="trans.axi4.cache_other_alloc" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".start_delay" visible="1" source="start_delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".end_delay" visible="1" source="end_delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".dmi_data.dmi_ptr" visible="1" source="dmi_data.dmi_ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans" visible="1" source="trans" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm" visible="1" source="tlm" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.Origin" source="tlm.Origin" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.stash_lp_id" source="tlm.trans.chi_c.stash_lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.data_ptr" source="tlm.trans.data_ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.order" source="tlm.trans.chi_c.order" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.return_txn_id" source="tlm.trans.chi_c.return_txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.rsp.tag_group_id" source="tlm.trans.chi_c.rsp.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.rsp.tgt_id" source="tlm.trans.chi_c.rsp.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.mpam" source="tlm.trans.chi_c.mpam" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.tag_group_id" source="tlm.trans.chi_c.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.return_n_id" source="tlm.trans.chi_c.return_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ptr" source="tlm.trans.ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.rsp.fwd_state" source="tlm.trans.chi_c.rsp.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.tlm_phase" source="tlm.tlm_phase" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.cmd" source="tlm.trans.cmd" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.byte_enable" source="tlm.trans.byte_enable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.rsp.resp_err" source="tlm.trans.chi_c.rsp.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.address" source="tlm.trans.address" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.rsp.resp" source="tlm.trans.chi_c.rsp.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.tag_op" source="tlm.trans.chi_c.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.rsp.pcrd_type" source="tlm.trans.chi_c.rsp.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.rsp.tag_op" source="tlm.trans.chi_c.rsp.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.gp_option" source="tlm.trans.gp_option" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.size" source="tlm.trans.chi_c.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.rsp.db_id" source="tlm.trans.chi_c.rsp.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.stash_n_id" source="tlm.trans.chi_c.stash_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.tlm_phase[return_path]" source="tlm.tlm_phase[return_path]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.delay[return_path]" source="tlm.delay[return_path]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.req.pcrd_type" source="tlm.trans.chi_c.req.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.txn_rsvdc" source="tlm.trans.chi_c.txn_rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.response" source="tlm.trans.response" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.rsp.opcode" source="tlm.trans.chi_c.rsp.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.byte_enable_length" source="tlm.trans.byte_enable_length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.txn_id" source="tlm.trans.chi_c.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.lp_id" source="tlm.trans.chi_c.lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.delay" source="tlm.delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.opcode" source="tlm.trans.chi_c.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.data_length" source="tlm.trans.data_length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.qos" source="tlm.trans.chi_c.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.tgt_id" source="tlm.trans.chi_c.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.src_id" source="tlm.trans.chi_c.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.streaming_width" source="tlm.trans.streaming_width" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.mem_attr" source="tlm.trans.chi_c.mem_attr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.tlm_sync" source="tlm.tlm_sync" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.tgt_id" source="tlm.trans.chi_d.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.tu" source="tlm.trans.chi_c.tu" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.qos" source="tlm.trans.chi_d.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.fwd_state" source="tlm.trans.chi_d.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.poison" source="tlm.trans.chi_d.poison" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.data_pull" source="tlm.trans.chi_d.data_pull" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.resp_err" source="tlm.trans.chi_d.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.tag_op" source="tlm.trans.chi_d.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.data_id" source="tlm.trans.chi_d.data_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.rsvdc" source="tlm.trans.chi_d.rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.opcode" source="tlm.trans.chi_d.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.home_node_id" source="tlm.trans.chi_d.home_node_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_c.tag" source="tlm.trans.chi_c.tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.resp" source="tlm.trans.chi_d.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.data_check" source="tlm.trans.chi_d.data_check" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.cc_id" source="tlm.trans.chi_d.cc_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.txn_id" source="tlm.trans.chi_d.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.db_id" source="tlm.trans.chi_d.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.data_source" source="tlm.trans.chi_d.data_source" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.chi_d.src_id" source="tlm.trans.chi_d.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.exclusive" source="tlm.trans.ace.exclusive" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.cache" source="tlm.trans.ace.cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.resp" source="tlm.trans.ace.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.barrier" source="tlm.trans.ace.barrier" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.qos" source="tlm.trans.ace.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.id" source="tlm.trans.ace.id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.region" source="tlm.trans.ace.region" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.cresp" source="tlm.trans.ace.cresp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.snoop" source="tlm.trans.ace.snoop" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.prot" source="tlm.trans.ace.prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.length" source="tlm.trans.ace.length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.burst" source="tlm.trans.ace.burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.domain" source="tlm.trans.ace.domain" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.user[CTRL]" source="tlm.trans.ace.user[CTRL]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.uid" source="tlm.trans.uid" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.user[DATA]" source="tlm.trans.ace.user[DATA]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.ace.size" source="tlm.trans.ace.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.cache" source="tlm.trans.axi4.cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.region" source="tlm.trans.axi4.region" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.prot" source="tlm.trans.axi4.prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.length" source="tlm.trans.axi4.length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.qos" source="tlm.trans.axi4.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.user[CTRL]" source="tlm.trans.axi4.user[CTRL]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.user[RESP]" source="tlm.trans.axi4.user[RESP]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.id" source="tlm.trans.axi4.id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.resp" source="tlm.trans.axi4.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.burst" source="tlm.trans.axi4.burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.user[DATA]" source="tlm.trans.axi4.user[DATA]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.exclusive" source="tlm.trans.axi4.exclusive" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.axi4.size" source="tlm.trans.axi4.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".tlm.trans.data_value" source="tlm.trans.data_value" type="1" defaultIconId="codicon-symbol-enum-member"/>
         </part.configuration.samples>
     </part.builtin>
     <part.builtin name="de.toem.impulse.parts.sample">
@@ -342,7 +438,7 @@
             <part.view.sample.row name="Layer" visible="1" description="Layer of a sample within a group. Used for hierarchical or multi-layered data structures." type="9" defaultIconId="ri-list-ordered"/>
             <part.view.sample.row name="Samples(@)" visible="1" description="Indices of all samples within a group. Useful for grouped or related data." type="10" defaultIconId="codicon-tasklist"/>
             <part.view.sample.row name="Labels" visible="1" description="Labels or annotations attached to samples. Used for marking events or adding notes." type="11" defaultIconId="codicon-symbol-text"/>
-            <part.view.sample.row name="Relation" visible="1" description="Relations or links between samples, such as dependencies or annotations." type="12" defaultIconId="ri-arrow-right-down-line"/>
+            <part.view.sample.row name="Relation" visible="1" description="Relations or links between samples, such as dependencies or annotations." type="12" defaultIconId="ri-arrow-right-down-line" wrap="true"/>
             <part.view.sample.row name="Tag" visible="1" description="Tags or metadata for a sample or group. Used for categorization, filtering, and visualization." type="13" defaultIconId="ri-price-tag-3-line"/>
             <part.view.sample.row name="Value" visible="1" description="Value of a sample, according to its signal type (logic, float, integer, text, etc.)." type="4" defaultIconId="codicon-symbol-value"/>
             <part.view.sample.row name=".[0.0,2.0)" visible="1" source="[0.0,2.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
@@ -631,6 +727,102 @@
             <part.view.sample.row name=".start_delay" visible="1" source="start_delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.sample.row name=".end_delay" visible="1" source="end_delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.sample.row name=".dmi_data.dmi_ptr" visible="1" source="dmi_data.dmi_ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".trans" visible="1" source="trans" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm" visible="1" source="tlm" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.Origin" visible="1" source="tlm.Origin" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.exclusive" visible="1" source="tlm.trans.ace.exclusive" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.cache" visible="1" source="tlm.trans.ace.cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.data_ptr" visible="1" source="tlm.trans.data_ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.resp" visible="1" source="tlm.trans.ace.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.barrier" visible="1" source="tlm.trans.ace.barrier" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ptr" visible="1" source="tlm.trans.ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.tlm_phase" visible="1" source="tlm.tlm_phase" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.cmd" visible="1" source="tlm.trans.cmd" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.byte_enable" visible="1" source="tlm.trans.byte_enable" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.qos" visible="1" source="tlm.trans.ace.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.address" visible="1" source="tlm.trans.address" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.id" visible="1" source="tlm.trans.ace.id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.region" visible="1" source="tlm.trans.ace.region" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.gp_option" visible="1" source="tlm.trans.gp_option" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.cresp" visible="1" source="tlm.trans.ace.cresp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.snoop" visible="1" source="tlm.trans.ace.snoop" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.tlm_phase[return_path]" visible="1" source="tlm.tlm_phase[return_path]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.prot" visible="1" source="tlm.trans.ace.prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.length" visible="1" source="tlm.trans.ace.length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.delay[return_path]" visible="1" source="tlm.delay[return_path]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.burst" visible="1" source="tlm.trans.ace.burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.domain" visible="1" source="tlm.trans.ace.domain" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.response" visible="1" source="tlm.trans.response" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.byte_enable_length" visible="1" source="tlm.trans.byte_enable_length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.user[CTRL]" visible="1" source="tlm.trans.ace.user[CTRL]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.uid" visible="1" source="tlm.trans.uid" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.delay" visible="1" source="tlm.delay" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.data_length" visible="1" source="tlm.trans.data_length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.user[DATA]" visible="1" source="tlm.trans.ace.user[DATA]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.ace.size" visible="1" source="tlm.trans.ace.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.streaming_width" visible="1" source="tlm.trans.streaming_width" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.tlm_sync" visible="1" source="tlm.tlm_sync" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.stash_lp_id" visible="1" source="tlm.trans.chi_c.stash_lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.order" visible="1" source="tlm.trans.chi_c.order" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.return_txn_id" visible="1" source="tlm.trans.chi_c.return_txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.rsp.tag_group_id" visible="1" source="tlm.trans.chi_c.rsp.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.rsp.tgt_id" visible="1" source="tlm.trans.chi_c.rsp.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.mpam" visible="1" source="tlm.trans.chi_c.mpam" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.tag_group_id" visible="1" source="tlm.trans.chi_c.tag_group_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.return_n_id" visible="1" source="tlm.trans.chi_c.return_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.rsp.fwd_state" visible="1" source="tlm.trans.chi_c.rsp.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.rsp.resp_err" visible="1" source="tlm.trans.chi_c.rsp.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.rsp.resp" visible="1" source="tlm.trans.chi_c.rsp.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.tag_op" visible="1" source="tlm.trans.chi_c.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.rsp.pcrd_type" visible="1" source="tlm.trans.chi_c.rsp.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.rsp.tag_op" visible="1" source="tlm.trans.chi_c.rsp.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.size" visible="1" source="tlm.trans.chi_c.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.rsp.db_id" visible="1" source="tlm.trans.chi_c.rsp.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.stash_n_id" visible="1" source="tlm.trans.chi_c.stash_n_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.req.pcrd_type" visible="1" source="tlm.trans.chi_c.req.pcrd_type" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.txn_rsvdc" visible="1" source="tlm.trans.chi_c.txn_rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.rsp.opcode" visible="1" source="tlm.trans.chi_c.rsp.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.txn_id" visible="1" source="tlm.trans.chi_c.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.lp_id" visible="1" source="tlm.trans.chi_c.lp_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.opcode" visible="1" source="tlm.trans.chi_c.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.qos" visible="1" source="tlm.trans.chi_c.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.tgt_id" visible="1" source="tlm.trans.chi_c.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.src_id" visible="1" source="tlm.trans.chi_c.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.mem_attr" visible="1" source="tlm.trans.chi_c.mem_attr" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.tgt_id" visible="1" source="tlm.trans.chi_d.tgt_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.tu" visible="1" source="tlm.trans.chi_c.tu" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.qos" visible="1" source="tlm.trans.chi_d.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.fwd_state" visible="1" source="tlm.trans.chi_d.fwd_state" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.poison" visible="1" source="tlm.trans.chi_d.poison" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.data_pull" visible="1" source="tlm.trans.chi_d.data_pull" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.resp_err" visible="1" source="tlm.trans.chi_d.resp_err" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.tag_op" visible="1" source="tlm.trans.chi_d.tag_op" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.data_id" visible="1" source="tlm.trans.chi_d.data_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.rsvdc" visible="1" source="tlm.trans.chi_d.rsvdc" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.opcode" visible="1" source="tlm.trans.chi_d.opcode" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.home_node_id" visible="1" source="tlm.trans.chi_d.home_node_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_c.tag" visible="1" source="tlm.trans.chi_c.tag" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.resp" visible="1" source="tlm.trans.chi_d.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.data_check" visible="1" source="tlm.trans.chi_d.data_check" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.cc_id" visible="1" source="tlm.trans.chi_d.cc_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.txn_id" visible="1" source="tlm.trans.chi_d.txn_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.db_id" visible="1" source="tlm.trans.chi_d.db_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.data_source" visible="1" source="tlm.trans.chi_d.data_source" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.chi_d.src_id" visible="1" source="tlm.trans.chi_d.src_id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.cache" visible="1" source="tlm.trans.axi4.cache" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.region" visible="1" source="tlm.trans.axi4.region" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.prot" visible="1" source="tlm.trans.axi4.prot" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.length" visible="1" source="tlm.trans.axi4.length" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.qos" visible="1" source="tlm.trans.axi4.qos" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.user[CTRL]" visible="1" source="tlm.trans.axi4.user[CTRL]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.user[RESP]" visible="1" source="tlm.trans.axi4.user[RESP]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.id" visible="1" source="tlm.trans.axi4.id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.resp" visible="1" source="tlm.trans.axi4.resp" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.burst" visible="1" source="tlm.trans.axi4.burst" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.user[DATA]" visible="1" source="tlm.trans.axi4.user[DATA]" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.exclusive" visible="1" source="tlm.trans.axi4.exclusive" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.axi4.size" visible="1" source="tlm.trans.axi4.size" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.sample.row name=".tlm.trans.data_value" visible="1" source="tlm.trans.data_value" type="1" defaultIconId="codicon-symbol-enum-member"/>
         </part.configuration.sample>
     </part.builtin>
     <part.builtin name="de.toem.impulse.dialog.viewSelect"/>
@@ -719,4 +911,5 @@
     <part.builtin name="reader.log.yaml"/>
     <part.builtin name="reader.log.yaml.option"/>
     <part.builtin name="de.toem.impulse.adapter.tcp"/>
+    <part.builtin name="de.toem.toolkits.dialog.modification"/>
 </parts>

@@ -3453,7 +3453,10 @@
         <view.axis name="Secondary Axis"/>
     </view>
     <view name="afcdemo">
-        <view.signal name="m_from_hscs_pcie_ace_lite_e_slv__rec_nb" primarySource="demo2/m_from_hscs_pcie_ace_lite_e_slv__rec_nb" description="[TLM][axi][nb]"/>
+        <view.signal name="m_from_hscs_pcie_ace_lite_e_slv__rec_nb" primarySource="demo2/m_from_hscs_pcie_ace_lite_e_slv__rec_nb" description="[TLM][axi][nb]" preferedHeight="73">
+            <diagramProperties len="0"/>
+            <deduceProperties len="0"/>
+        </view.signal>
         <view.signal name="m_from_hscs_pcie_ace_lite_e_slv__rec_nb_timed" primarySource="demo2/m_from_hscs_pcie_ace_lite_e_slv__rec_nb_timed" description="[TLM][axi][nb][timed]"/>
         <view.signal name="s_to_bb_noc1_axi4_mst__rec_nb" primarySource="demo2/s_to_bb_noc1_axi4_mst__rec_nb" description="[TLM][axi][nb]"/>
         <view.signal name="s_to_bb_noc1_axi4_mst__rec_nb_timed" primarySource="demo2/s_to_bb_noc1_axi4_mst__rec_nb_timed" description="[TLM][axi][nb][timed]"/>
@@ -3715,7 +3718,8 @@
                     <view.signal name="cd_last" primarySource="rtl_sim/wrapper/x_ace_intor/cd_last" description="wire"/>
                     <view.signal name="clk_i" primarySource="rtl_sim/wrapper/x_ace_intor/clk_i" description="wire"/>
                 </view.folder>
-                <view.folder name="x_chi_intor" iconId="ri-arrow-down-circle-line" primarySource="rtl_sim/wrapper/x_chi_intor" induceProducer="de.toem.impulse.processor.chiAnalyzer" preferedHeight="493">
+                <view.folder name="x_chi_intor" iconId="ri-arrow-down-circle-line" primarySource="rtl_sim/wrapper/x_chi_intor" induceProducer="de.toem.impulse.processor.chiAnalyzer" preferedHeight="223">
+                    <induceProperties len="0"/>
                     <view.signal name="tx_data_flit" primarySource="rtl_sim/wrapper/x_chi_intor/tx_data_flit" description="wire"/>
                     <view.signal name="tx_req_flit" primarySource="rtl_sim/wrapper/x_chi_intor/tx_req_flit" description="wire"/>
                     <view.signal name="tx_rsp_flit" primarySource="rtl_sim/wrapper/x_chi_intor/tx_rsp_flit" description="wire"/>
@@ -3853,7 +3857,7 @@
         </view.signal>
     </view>
     <view name="axi4test">
-        <view.folder name="AXI4 Bus" primarySource="AXI4 Bus" induceProducer="de.toem.impulse.processor.axiAnaylzer" preferedHeight="402">
+        <view.folder name="AXI4 Bus" primarySource="AXI4 Bus" induceProducer="de.toem.impulse.processor.axiAnaylzer">
             <view.signal name="ACLK" primarySource="AXI4 Bus/ACLK"/>
             <view.signal name="ARESETn" primarySource="AXI4 Bus/ARESETn"/>
             <view.signal name="AWID" primarySource="AXI4 Bus/AWID"/>
@@ -3894,7 +3898,7 @@
             <view.signal name="RRESP" primarySource="AXI4 Bus/RRESP"/>
             <view.signal name="RLAST" primarySource="AXI4 Bus/RLAST"/>
             <view.signal name="RVALID" primarySource="AXI4 Bus/RVALID"/>
-            <view.signal name="RREADY" primarySource="AXI4 Bus/RREADY"/>
+            <view.signal name="RREADY" primarySource="AXI4 Bus/RREADY" preferedHeight="125"/>
         </view.folder>
         <view.cursor name="A"/>
         <view.cursor name="B" colorIdx="1"/>
@@ -3942,6 +3946,7 @@
                 <members>Bandwidth</members>
             </diagramProperties>
         </view.signal>
+        <view.cursor name="C" colorIdx="2"/>
     </view>
     <view name="4_xscore71">
         <view.signal name="skt_chi_skt_chi__rec_nb" primarySource="xscore_rtl_sim/skt_chi_skt_chi__rec_nb" description="[TLM][chi][nb]" induceProducer="de.toem.impulse.processor.expressionFilter" preferedHeight="130" colorIdx="18">
@@ -3971,5 +3976,13 @@
                 <members>Bandwidth</members>
             </diagramProperties>
         </view.signal>
+    </view>
+    <view name="4_xscore71(1)">
+        <view.cursor name="A"/>
+        <view.cursor name="B" colorIdx="1"/>
+        <view.axis name="Primary Axis"/>
+        <view.axis name="Secondary Axis"/>
+        <view.signal name="skt_chi_skt_chi__rec_nb" primarySource="xscore_rtl_sim/skt_chi_skt_chi__rec_nb" description="[TLM][chi][nb]" induceProducer="de.toem.impulse.processor.tlmPhaseAnalyzer"/>
+        <view.signal name="Statistics" primarySource="Analysis/Statistics"/>
     </view>
 </views>

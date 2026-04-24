@@ -1,3 +1,5 @@
 .vscode/tasks.json
 .impulse/*copy*
 .impulse/license
+.impulse/colors
+.impulse/templates

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <serializers name="Serializers">
-    <serializer.builtin name="de.toem.impulse.reader.flux" namePattern="\.recTR$,\.recTr$,\.flux$,\.FLUX$"/>
-    <serializer.builtin name="de.toem.impulse.reader.recjx" namePattern="\.recJX$,\.recJx$"/>
-    <serializer.builtin name="de.toem.impulse.reader.line"/>
-    <serializer.builtin name="de.toem.impulse.reader.bytes"/>
     <serializer.builtin name="de.toem.serializer.genericXmlWriter">
         <serializer.configuration.default name="Wallet" pattern="walMl$,walML$" description="Wallet xml file" version="1"/>
         <serializer.configuration.default name="Record" pattern="recMl$,recML$" description="Record xml file" version="1"/>
@@ -20,19 +16,46 @@
         <serializer.configuration.default name="Wallet" pattern="walMz$,walMZ$" description="Wallet xml file" version="1"/>
         <serializer.configuration.default name="Record" pattern="recMz$,recMZ$" description="Record xml file" version="1"/>
     </serializer.builtin>
-    <serializer.builtin name="de.toem.impulse.reader.vcd" namePattern="\.vcd$,\.VCD$"/>
-    <serializer.builtin name="de.toem.impulse.reader.fst" namePattern="\.fst$,\.FST$"/>
-    <serializer.builtin name="de.toem.impulse.reader.fstn" namePattern="\.fst$,\.FST$"/>
+    <serializer.builtin name="de.toem.impulse.reader.vcd" namePattern="\.vcd$,\.VCD$">
+        <serializer.configuration.default name="Configuration">
+            <properties len="1">
+                <empty>false</empty>
+            </properties>
+        </serializer.configuration.default>
+    </serializer.builtin>
+    <serializer.builtin name="de.toem.impulse.reader.fst" namePattern="\.fst$,\.FST$">
+        <serializer.configuration.default name="Metrics">
+            <properties len="1">
+                <lazy>false</lazy>
+            </properties>
+            <record.analysis name="Analysis" producer="de.toem.impulse.cellProducer.transactionMetrix">
+                <record.source name="Source" reference=".."/>
+            </record.analysis>
+        </serializer.configuration.default>
+    </serializer.builtin>
+    <serializer.builtin name="de.toem.impulse.reader.fstn" namePattern="\.fst$,\.FST$">
+        <serializer.configuration.default name="Metrics">
+            <properties len="1">
+                <lazy>false</lazy>
+            </properties>
+            <record.analysis name="Analysis" producer="de.toem.impulse.cellProducer.transactionMetrix">
+                <record.source name="Source" reference=".."/>
+            </record.analysis>
+        </serializer.configuration.default>
+    </serializer.builtin>
     <serializer.builtin name="de.toem.impulse.reader.fsdbn" namePattern="\.fsdb$,\.FSDB$">
-        <properties len="2">
+        <properties len="4">
             <incPath>/home/thomas/Workspaces/impulse/de.toem.libraries.external/FsdbReader</incPath>
             <libPath>/home/thomas/Workspaces/impulse/de.toem.libraries.external/FsdbReader/linux-x86_64</libPath>
         </properties>
     </serializer.builtin>
     <serializer.builtin name="de.toem.impulse.reader.scv" namePattern="\.scv$,\.SCV$,\.txlog$">
-        <serializer.configuration.default name="Metrix">
-            <properties len="7">
-                <excludeAllRelation>false</excludeAllRelation>
+        <properties len="1">
+            <excludeAllRelation>false</excludeAllRelation>
+        </properties>
+        <serializer.configuration.default name="Metrics">
+            <properties len="1">
+                <lazy>false</lazy>
             </properties>
             <record.analysis name="Analysis" producer="de.toem.impulse.cellProducer.transactionMetrix">
                 <record.source name="Source" reference=".."/>
@@ -40,11 +63,17 @@
         </serializer.configuration.default>
     </serializer.builtin>
     <serializer.builtin name="de.toem.impulse.reader.ftr" namePattern="\.ftr$,\.FTR$">
-        <serializer.configuration.default name="Metrix">
+        <serializer.configuration.default name="Metrics">
+            <properties len="1">
+                <lazy>false</lazy>
+            </properties>
             <record.analysis name="Analysis" producer="de.toem.impulse.cellProducer.transactionMetrix">
                 <record.source name="Source" reference=".."/>
             </record.analysis>
         </serializer.configuration.default>
     </serializer.builtin>
-    <serializer.builtin name="de.toem.impulse.reader.svdat" namePattern="\.SVDat$,\.SVDAT$"/>
+    <serializer.builtin name="de.toem.impulse.reader.flux" namePattern="\.recTR$,\.recTr$,\.flux$,\.FLUX$"/>
+    <serializer.builtin name="de.toem.impulse.reader.recjx" namePattern="\.recJX$,\.recJx$"/>
+    <serializer.builtin name="de.toem.impulse.reader.line"/>
+    <serializer.builtin name="de.toem.impulse.reader.bytes"/>
 </serializers>
