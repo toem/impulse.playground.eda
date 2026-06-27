@@ -34,9 +34,8 @@
             <part.view.samples.column name="Signal" visible="1" description="Signal to which the sample belongs. Provides context for the sample's origin." type="6" defaultIconId="ti-signal-any"/>
             <part.view.samples.column name="End" visible="1" description="Last position or endpoint of a sample group. Marks where a group of related samples ends." type="3" defaultIconId="ri-map-pin-fill" alignment="2"/>
             <part.view.samples.column name="Group(⋕)" visible="1" description="Group index for grouped samples. Useful for representing transactions or hierarchical data." type="7" defaultIconId="ri-group-2-line"/>
-            <part.view.samples.column name="Order" visible="1" description="Order of a sample within its group (first, intermediate, last). Indicates sequence within a group." type="8" defaultIconId="ri-list-ordered"/>
             <part.view.samples.column name="Layer" visible="1" description="Layer of a sample within a group. Used for hierarchical or multi-layered data structures." type="9" defaultIconId="ri-list-ordered"/>
-            <part.view.samples.column name="Samples(@)" visible="1" description="Indices of all samples within a group. Useful for grouped or related data." type="10" defaultIconId="codicon-tasklist"/>
+            <part.view.samples.column name="Order" visible="1" description="Order of a sample within its group (first, intermediate, last). Indicates sequence within a group." type="8" defaultIconId="ri-list-ordered"/>
             <part.view.samples.column name="Labels" visible="1" description="Labels or annotations attached to samples. Used for marking events or adding notes." type="11" defaultIconId="codicon-symbol-text"/>
             <part.view.samples.column name="Relation" visible="1" description="Relations or links between samples, such as dependencies or annotations." type="12" defaultIconId="ri-arrow-right-down-line"/>
             <part.view.samples.column name="Tag" visible="1" description="Tags or metadata for a sample or group. Used for categorization, filtering, and visualization." type="13" defaultIconId="ri-price-tag-3-line"/>
@@ -51,10 +50,11 @@
             <part.view.samples.column name=".[12.0,14.0)" visible="1" source="[12.0,14.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".[14.0,16.0)" visible="1" source="[14.0,16.0)" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".high" visible="1" source="high" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name="Samples(@)" visible="1" description="Indices of all samples within a group. Useful for grouped or related data." type="10" defaultIconId="codicon-tasklist"/>
             <part.view.samples.column name=".State" visible="1" source="State" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Event" visible="1" source="Event" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Cmd" visible="1" source="Cmd" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".Address" visible="1" source="Address" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".Address" visible="1" source="Address" type="1" defaultIconId="codicon-symbol-enum-member" filterOptions="v&gt;0x200 &amp;&amp; v &lt; 0x1000"/>
             <part.view.samples.column name=".Length" visible="1" source="Length" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Progress" visible="1" source="Progress" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".ID" visible="1" source="ID" type="1" defaultIconId="codicon-symbol-enum-member"/>
@@ -91,7 +91,7 @@
             <part.view.samples.column name=".Domain" visible="1" source="Domain" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Barrier" visible="1" source="Barrier" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Snoop" visible="1" source="Snoop" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".Req" visible="1" source="Req" type="1" defaultIconId="codicon-symbol-enum-member" wrap="true"/>
+            <part.view.samples.column name=".Req" source="Req" type="1" defaultIconId="codicon-symbol-enum-member" wrap="true"/>
             <part.view.samples.column name=".Req.QoS" source="Req.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Req.TgtID" source="Req.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Req.SrcID" source="Req.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
@@ -114,7 +114,7 @@
             <part.view.samples.column name=".Req.SnoopMe" source="Req.SnoopMe" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Req.ExpCompAck" source="Req.ExpCompAck" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Req.TraceTag" source="Req.TraceTag" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".Dat0" visible="1" source="Dat0" type="1" defaultIconId="codicon-symbol-enum-member" wrap="true"/>
+            <part.view.samples.column name=".Dat0" source="Dat0" type="1" defaultIconId="codicon-symbol-enum-member" wrap="true"/>
             <part.view.samples.column name=".Dat0.QoS" source="Dat0.QoS" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Dat0.TgtID" source="Dat0.TgtID" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Dat0.SrcID" source="Dat0.SrcID" type="1" defaultIconId="codicon-symbol-enum-member"/>
@@ -232,7 +232,7 @@
             <part.view.samples.column name=".trans.dmi" visible="1" source="trans.dmi" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".Origin" source="Origin" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.ptr" source="trans.ptr" type="1" defaultIconId="codicon-symbol-enum-member"/>
-            <part.view.samples.column name=".trans.ace.id" visible="1" source="trans.ace.id" type="1" defaultIconId="codicon-symbol-enum-member"/>
+            <part.view.samples.column name=".trans.ace.id" source="trans.ace.id" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.ace.user[CTRL]" source="trans.ace.user[CTRL]" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.ace.user[DATA]" source="trans.ace.user[DATA]" type="1" defaultIconId="codicon-symbol-enum-member"/>
             <part.view.samples.column name=".trans.ace.length" source="trans.ace.length" type="1" defaultIconId="codicon-symbol-enum-member"/>
@@ -847,7 +847,6 @@
     <part.builtin name="view.deduced"/>
     <part.builtin name="view.source"/>
     <part.builtin name="templates"/>
-    <part.builtin name="searches"/>
     <part.builtin name="samplesSearch.builtin"/>
     <part.builtin name="samplesSearch.configuration.default"/>
     <part.builtin name="samplesSearch.source"/>
@@ -867,7 +866,6 @@
     <part.builtin name="diagram.configuration.default"/>
     <part.builtin name="color.set"/>
     <part.builtin name="color.builtin"/>
-    <part.builtin name="samplesFormatter"/>
     <part.builtin name="samplesFormatter.builtin"/>
     <part.builtin name="licenses"/>
     <part.builtin name="license.key"/>
@@ -912,4 +910,7 @@
     <part.builtin name="reader.log.yaml.option"/>
     <part.builtin name="de.toem.impulse.adapter.tcp"/>
     <part.builtin name="de.toem.toolkits.dialog.modification"/>
+    <part.builtin name="search"/>
+    <part.builtin name="formatters"/>
+    <part.builtin name="reader.csv"/>
 </parts>

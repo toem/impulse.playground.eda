@@ -32,7 +32,7 @@ impulse is a visualization and analysis workbench for signals from logs, traces,
 
 1) Open any sample file in impulse.
 2) Click **Open Views** and pick a matching starter view (see below).
-3) Need help? See the impulse manual for guided tours, feature deep-dives, and troubleshooting: [toem.io/category/resources/impulse-manual/](https://toem.io/category/resources/impulse-manual/). Recommended sections: Introduction, impulse at a Glance, and Views.
+3) Need help? Try the impulse videos at  [https://toem.io/category/resources/impulse-videos/](https://toem.io/category/resources/impulse-videos/).
 
 ## Hints
 
@@ -42,7 +42,18 @@ impulse is a visualization and analysis workbench for signals from logs, traces,
 
 2. **View Selection**: When opening a record, impulse tries to find the best view based on the signals referred to. You can see this judgment in the view selection dialog (Good, Weak, Bad). In some cases, impulse does not find the correct view automatically but opens the view selection dialog for you to select.
 
-3. **Reader Configuration**: In some cases, you may need to choose a reader configuration to add additional analysis or other record elements if you find something missing in the view.
+## License
+
+**Our guiding principle for this and all subsequent versions is:**
+
+* Non-commercial use is free.
+* Commercial use requires a commercial license (including a free plan).
+* see [LICENSE.md](LICENSE.md)
+* see [Plans](https://toem.io/index.php/pricing)
+
+## Documentation & Videos
+ 
+Enter [https://toem.io/resources/](https://toem.io/resources/) for more information about impulse. 
 
 ## Advanced Features Demonstrated
 

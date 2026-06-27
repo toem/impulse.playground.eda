@@ -3453,7 +3453,7 @@
         <view.axis name="Secondary Axis"/>
     </view>
     <view name="afcdemo">
-        <view.signal name="m_from_hscs_pcie_ace_lite_e_slv__rec_nb" primarySource="demo2/m_from_hscs_pcie_ace_lite_e_slv__rec_nb" description="[TLM][axi][nb]" preferedHeight="73">
+        <view.signal name="m_from_hscs_pcie_ace_lite_e_slv__rec_nb" primarySource="demo2/m_from_hscs_pcie_ace_lite_e_slv__rec_nb" description="[TLM][axi][nb]" preferedHeight="247">
             <diagramProperties len="0"/>
             <deduceProperties len="0"/>
         </view.signal>
@@ -3758,7 +3758,7 @@
                     <view.signal name="buffer_1" primarySource="rtl_sim/wrapper/x_chi_intor/buffer_1" description="wire"/>
                     <view.signal name="txreq_lredits" primarySource="rtl_sim/wrapper/x_chi_intor/txreq_lredits" description="wire"/>
                 </view.folder>
-                <view.folder name="x_axi4_intor" iconId="ri-arrow-down-circle-line" primarySource="rtl_sim/wrapper/x_axi4_intor" induceProducer="de.toem.impulse.processor.axiAnaylzer#Configuration" preferedHeight="144">
+                <view.folder name="x_axi4_intor" iconId="ri-arrow-down-circle-line" primarySource="rtl_sim/wrapper/x_axi4_intor" induceProducer="de.toem.impulse.processor.axiAnaylzer" preferedHeight="649">
                     <induceProperties len="1">
                         <delay>1ps</delay>
                     </induceProperties>
