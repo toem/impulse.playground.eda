@@ -1,6 +1,6 @@
 .vscode/tasks.json
 .impulse/**/*copy*
-.impulse/de.toem.impulse.base/license
+.impulse/de.toem.impulse.base/licenses
 .impulse/de.toem.impulse.base/colors
 .impulse/de.toem.impulse.base/templates
 .impulse/de.toem.impulse.base/producers
