@@ -1,17 +1,25 @@
 # impulse EDA Playground
 
-A comprehensive playground showcasing impulse's capabilities for EDA waveform analysis and protocol verification. This workspace includes realistic waveforms, TLM transactions, and pinlevel protocol analysis from industry-standard formats (VCD, FST, FSDB) along with specialized transaction logs.
+Welcome to impulse. This is a playground to learn waveform analysis and protocol verification—start by opening a sample file, explore the starter views, and discover what impulse can do. Sample data includes waveforms from industry formats (VCD, FST, FSDB), transaction-level modeling records, and pin-level protocol analysis with pre-configured views demonstrating hierarchical navigation, transaction extraction, protocol analysis, latency measurement, and compliance checking.
 
 ![Playground overview](images/sandbox.png)
 
-## Introduction to impulse
+## About impulse
 
-impulse is a visualization and analysis workbench for signals from logs, traces, and simulations. It helps you inspect large datasets efficiently and tailor presentations for your workflow.
+**impulse** is a powerful visualization and analysis workbench designed to help engineers understand, analyze, and debug complex semiconductor and multi-core software systems. It provides seamless integration into IDE frameworks and enables interoperability with a growing set of extensions, such as language IDEs and reporting tools.
+
+**impulse** is based on a modular framework designed to unify the handling of signal and measurement data from diverse sources. It provides a robust infrastructure for reading, writing, analyzing, and visualizing signals, supporting both simple and highly structured data. impulse's extensible architecture allows developers to add support for new data formats by implementing custom readers and writers, making it a versatile tool for engineers, scientists, and developers.
+
+### Terminology ### 
 
 - Records: Hierarchical containers with scopes and elements (signals, includes, analysis, interfaces).  
 - Signals: Sequences of samples along a domain (typically time). Supported types include logic, float, integer, enum/event, text, array, struct, and binary.  
 - Views: Reusable presentations that combine signals, folders, and diagrams (line, gantt, event, charts). Views support multiple axes and cursors. Processing is on demand—only visible parts are computed, and collapsed folders don't trigger processing.  
 - Processing & automation: Readers/producers build records; processors and expressions derive or filter signals; value formats and labels control textual rendering.
+
+## About EDA
+
+**Electronic Design Automation (EDA)** refers to the category of software tools used for designing, simulating, and verifying electronic systems such as integrated circuits, FPGAs, and printed circuit boards. This extension specifically focuses on **analog circuit simulation**, which is essential for analyzing continuous-time and mixed-signal designs. Analog simulation tools such as SPICE (and its variants like HSpice) and SystemC AMS generate simulation data that must be analyzed to verify circuit behavior, performance, and compliance with design specifications.
 
 ## What's Here
 

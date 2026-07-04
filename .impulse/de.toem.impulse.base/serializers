@@ -88,7 +88,7 @@
             <properties len="1">
                 <lazy>false</lazy>
             </properties>
-            <record.analysis name="Analysis" producer="de.toem.impulse.cellProducer.transactionMetrix">
+            <record.analysis name="Analysis" runOnLoad="true" producer="de.toem.impulse.cellProducer.transactionMetrix">
                 <record.source name="Source" reference=".."/>
             </record.analysis>
         </serializer.configuration.default>
@@ -149,4 +149,7 @@
             </properties>
         </serializer.configuration.default>
     </serializer.java>
+    <serializer.builtin name="de.toem.impulse.reader.svdat" namePattern="\.SVDat$,\.SVDAT$"/>
+    <serializer.builtin name="de.toem.impulse.reader.tab" namePattern="\.tab$,\.TAB$"/>
+    <serializer.builtin name="de.toem.impulse.reader.spice3" namePattern="\.raw$,\.RAW$"/>
 </serializers>
